@@ -1,0 +1,43 @@
+<br/><br/><br/><br/><br/><br/><br/><br/>
+<div class="ui centered center aligned floated text container">
+    <form role="form" novalidate="novalidate" ng-submit="login()">
+    <div class="content">
+        <div class="ui grid">
+            <div class="row">
+                <div class="three wide column"></div>
+                <div class="ten wide column">
+                    <img class="ui centered center aligned image" src="images/logo_face_06.jpg">
+                </div>
+                <div class="three wide column"></div>
+            </div>
+            <div class="row">
+                <div class="three wide column"></div>
+                <div class="ten wide column">
+                    <div class="ui fluid input">
+                        <input ng-model-options="{ updateOn: 'blur' }" type="email" ng-model="checkUser.email" class="form-control" placeholder="e-mail" name="email" ng-pattern='patern' ng-pattern-err-type="badEmail" email-err-type="badEmail" required required-err-type="required" autofocus>
+                    </div>
+                </div>
+                <div class="three wide column"></div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="three wide column"></div>
+                <div class="ten wide column">
+                    <div class="ui fluid input">
+                        <input ng-model-options="{ updateOn: 'blur' }" type="password" ng-model="checkUser.password" class="form-control" placeholder="mot de passe" name="password" required required-err-type="required" value="">
+                    </div>
+                </div>
+                <div class="three wide column"></div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="three wide column"></div>
+                <div class="ten wide column">
+                    <button id="validate" type='submit' v-busy="isBusy" v-busy-label="Chargement" class="ui fluid button blue" v-pressable>Connexion</button>
+                </div>
+                <div class="three wide column"></div>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>
