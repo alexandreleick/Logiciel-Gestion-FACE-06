@@ -1,0 +1,51 @@
+<div class="ui cards">
+    <div class="ui card">
+        <span class="right aligned right floated meta">
+            <span data-tooltip="Voir les détails de l'événement">
+                <a href="/#!/events/{{event.id}}"><i class="unhide link icon grey"></i></a>
+            </span>
+            <span data-tooltip="Modifier l'événement">
+                <a href="/#!/create/event/{{event.id}}"><i class="pencil link icon grey"></i></a>
+            </span>
+            <span data-tooltip="{{event.deleteButtonToolTip}}">
+                <a href=""><i class="link icon" ng-class="{'grey trash': event.deleteButtonType == 'delete', 'grey archive': event.deleteButtonType == 'archive', 'red dont': event.deleteButtonType == 'unavailable'}" ng-click="deleteEvent(event)"></i></a>
+            </span>
+        </span>
+        <a href="/#!/events/{{event.id}}">
+            <img class="ui fluid image" src="{{event.get('coverPhoto').url()}}" style="height: 150px; overflow: hidden; object-fit:cover">
+            <!-- TODO : Add to main.css --> 
+        </a>
+        <div class="content">
+            <h3><a href="/#!/events/{{event.id}}">{{event.get('name')}}</a></h3>
+            <div class="meta">
+                <a href="/#!/clients/{{event.get('internalClient').id}}">{{event.get('internalClient').get('name')}}</a>
+            </div>
+            <div class="description">
+                <a target="_blank" href="https://www.google.com/maps/search/{{event.get('address')}} {{event.get('zipCode')}} {{event.get('place')}}">{{event.get('place')}}</a>
+            </div>
+        </div>
+        <div class="extra content">
+            <span class="left aligned left floated">
+                <p>
+                    <i class="hourglass half icon"></i>
+                    {{event.get('schedule') | duration}} jour(s)
+                </p>
+                <p>
+                    <i class="icons">
+                        <i class="calendar outline icon"></i>
+                        <i class="corner add icon"></i>
+                    </i>
+                    {{event.get('dateStart') | date:'dd/MM/yy'}}
+                    <span ng-show="event.get('schedule').length > 2">- {{event.get('dateEnd') | date:'dd/MM/yy'}}</span>
+                </p>
+            </span>
+            <span class="right floated right centered">
+                <br />
+                <span data-tooltip="Ajouter des participants" data-position="bottom center">
+                    <a href="/#!/events/{{event.id}}" class="ui basic left icon label" ng-class="{red: event.get('numberOfParticipant') == 0, green: event.get('numberOfParticipant') == event.get('numberOfExpectedParticipant') && event.get('numberOfParticipant') > 0}">
+                        <i class="user icon" ng-class="{red: event.get('numberOfParticipant') == 0, green: event.get('numberOfParticipant') == event.get('numberOfExpectedParticipant') && event.get('numberOfParticipant') > 0}"></i>{{event.get('numberOfParticipant')}}/{{event.get('numberOfExpectedParticipant')}}</a>
+                </span>
+            </span>
+        </div>
+    </div>
+</div>

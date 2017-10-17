@@ -1,0 +1,35 @@
+<body bgcolor="#FDFDFD">
+
+    <div class="ui raised very padded container segment">
+
+        <div class="ui right aligned container">
+            <a ng-href="/#!/create/event" class="ui left icon basic button">
+                <i class="btn btn-primary">Ajouter un événement</i>
+
+            </a>
+            <a ng-href="/#!/create/user" class="ui left icon basic button" >
+                <i class="btn btn-primary">Ajouter un user</i>
+
+            </a>
+        </div>
+
+
+        <div class="ui stackable centered grid">
+            <div class="ui inverted dimmer" ng-hide="{{loadingEvent}}">
+                <div class="ui text loader">Récupération des évènements de l'agence</div>
+            </div>
+            <div ng-repeat="event in events" class="inline">
+                <div class="card-group">
+                    <div class="card" style="width: 20rem;">
+                        <img class="card-img-top" src="{{event.get('coverPhoto').url()}}" alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="card-title">{{event.get('name')}}</h4>
+                            <p class="card-text">Du {{event.get('dateStart')}} à {{event.get('hourStart')}} au {{event.get('dateEnd')}} à {{event.get('hourEnd')}}</p>
+                            <a href="/#!/event/{{event.id}}" class="btn btn-primary">Voir plus d'informations</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

@@ -13,7 +13,6 @@
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
         <!-- endbuild -->
     </head>
     <body ng-app="billetterieProjectApp">
@@ -22,47 +21,42 @@
 <![endif]-->
 
         <!-- Add your site or application content here -->
-        <div class="header">
-            <div class="navbar navbar-default" role="navigation">
-                <div class="container">
-                    <div class="navbar-header">
+        <!--
+<div class="header">
+<div class="navbar navbar-default" role="navigation">
+<div class="container">
+<div class="navbar-header">
 
-                        <a class="navbar-brand" href="#/">billetterieProject</a>
-                    </div>
+<a class="navbar-brand" href="#/">billetterieProject</a>
+</div>
 
-                    <div class="collapse">
+<div class="collapse">
 
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="#/">Home</a></li>
-                            <li><a ng-href="#/about">About</a></li>
-                            <li><a ng-href="#/">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+<ul class="nav navbar-nav">
+<li class="active"><a href="#/">Home</a></li>
+<li><a ng-href="#/about">About</a></li>
+<li><a ng-href="#/">Contact</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+-->
 
         <div class="container">
             <div ng-view=""></div>
         </div>
 
-        <div class="footer">
-            <div class="container">
-                <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-            </div>
-        </div>
+        <!--
+<div class="footer">
+<div class="container">
+<p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+</div>
+</div>
+-->
 
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-        <script>
-            !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-                (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-                r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-                                    }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-            ga('create', 'UA-XXXXX-X');
-            ga('send', 'pageview');
-        </script>
 
         <!-- build:js(.) scripts/vendor.js -->
         <!-- bower:js -->
@@ -78,12 +72,24 @@
         <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
-        <script src="https://npmcdn.com/parse/dist/parse.min.js"></script> 
+        <script src="https://npmcdn.com/parse/dist/parse.min.js"></script>
+<!--
+        <script src="http//ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+        <script src="http//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.js"></script>
+        <script src="vendor/angular-moment-picker/angular-moment-picker.min.js"></script>
+        <link href="vendor/angular-moment-picker/angular-moment-picker.min.css" rel="stylesheet">
+-->
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/events.js"></script>      
+        <script src="scripts/controllers/event.js"></script>
+        <script src="scripts/controllers/createEvent.js"></script>
+        <script src="scripts/controllers/createUser.js"></script>
+        <script src="scripts/services/APIManager.js"></script>
+<!--        <script src="scripts/directive/event-cell.js"></script>-->
         <!-- endbuild -->
     </body>
 </html>

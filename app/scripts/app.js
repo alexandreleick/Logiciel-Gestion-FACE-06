@@ -29,12 +29,27 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
-    .when('/fucking', {
-        templateUrl: 'views/test.html',
-        controller: 'TestCtrl',
-        controllerAs: 'main'
+    .when('/events', {
+        templateUrl: 'views/events.html',
+        controller: 'EventsCtrl',
+        controllerAs: 'events'
+      })
+    .when('/create/event', {
+        templateUrl: 'views/createEvent.html',
+        controller: 'CreateEventCtrl',
+        controllerAs: 'event'
+      })
+    .when('/event/:id', {
+        templateUrl: 'views/event.html',
+        controller: 'EventCtrl',
+        controllerAs: 'event'
+      })
+    .when('/create/user', {
+        templateUrl: 'views/createUser.html',
+        controller: 'CreateUserCtrl',
+        controllerAs: 'event'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/events'
       });
   });

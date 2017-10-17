@@ -1,0 +1,57 @@
+<script>
+    $('.dropdown-toggle').dropdown();
+</script>
+
+<div class="ui raised very padded text container segment">
+    <form class="ui equal width form" name="form">
+
+        <h3 class="ui dividing header">Créer un user</h3>
+        <br/>
+
+        <div class="form-row">
+            <div class="col">
+                <label for="firstname" class="col-form-label">Prénom</label>
+                <input ng-model="user.firstname" type="text" id="firstname" class="form-control" placeholder="Prénom" required>
+            </div>
+            <div class="col">
+                <label for="name" class="col-form-label">Nom</label>
+                <input ng-model="user.name" type="text" id="name" class="form-control" placeholder="Nom" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4" class="col-form-label">Email</label>
+                <input ng-model="user.email" type="email" class="form-control" id="inputEmail4" placeholder="Email" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4" class="col-form-label">Mot de passe</label>
+                <input ng-model="user.password" type="password" class="form-control" id="inputPassword4" placeholder="Mot de passe" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputAddress" class="col-form-label">Numéro de téléphone</label>
+            <input ng-model="user.phone" type="text" class="form-control" id="inputAddress" placeholder="Numéro de téléphone" required>
+        </div>
+        <div class="form-group">
+            <label for="inputAddress" class="col-form-label">Pôle</label>
+            <input ng-model="user.sector" type="text" class="form-control" id="inputAddress" placeholder="Pôle" required>
+        </div>
+        
+<!--
+        <div class="dropdown">
+            <label for="dropdownMenuButton" class="col-form-label">Pôle</label>
+            <br/>
+            <button ng-model="user.sector" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Pôle
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Présidence</a>
+                <a class="dropdown-item" href="#">Communication</a>
+                <a class="dropdown-item" href="#">Informatique</a>
+            </div>
+        </div>
+-->
+        <br/>
+        <button type="submit" class="btn btn-primary" ng-click="save()">Créer</button>
+    </form>
+</div>

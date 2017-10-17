@@ -1,0 +1,95 @@
+<!--
+<script>
+$('.ui.dropdown')
+.dropdown();
+
+$("#divUpload").on("click", function() {
+$('#inputCover').click();
+});
+
+</script>
+-->
+
+<!--<div ng-include src="'views/header.html'"></div>-->
+
+
+<div class="ui raised very padded text container segment">
+    <form class="ui equal width form" name="form">
+
+        <h3 class="ui dividing header">Créer un événement</h3>
+        <br/>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="validationDefault01">Nom de l'événement</label>
+                <input type="text" ng-model="event.name" class="form-control" id="validationDefault01" placeholder="Nom de l'événement" required>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-3 mb-3">
+                <label for="validationDefault04">Date de début</label>
+                <input type="text" ng-model="event.dateStart" class="form-control" id="validationDefault04" placeholder="DD/MM/YYYY" required>
+                <div class="invalid-feedback">
+                    Please provide a valid state.
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="validationDefault05">Date de fin</label>
+                <input type="text" ng-model="event.dateEnd" class="form-control" id="validationDefault05" placeholder="DD/MM/YYYY" required>
+                <div class="invalid-feedback">
+                    Please provide a valid zip.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-3 mb-3">
+                <label for="validationDefault04">Heure de début</label>
+                <input type="text" ng-model="event.hourStart" class="form-control" id="validationDefault04" placeholder="HH:MM" required>
+                <div class="invalid-feedback">
+                    Please provide a valid state.
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="validationDefault05">Heure de fin</label>
+                <input type="text" ng-model="event.hourEnd" class="form-control" id="validationDefault05" placeholder="HH:MM" required>
+                <div class="invalid-feedback">
+                    Please provide a valid zip.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="validationDefault03">Lieu</label>
+                <input type="text" ng-model="event.localisation" class="form-control" id="validationDefault03" placeholder="Lieu" required>
+                <div class="invalid-feedback">
+                    Please provide a valid city.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Description</label>
+            <textarea class="form-control" ng-model="event.desc" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <form>
+            <div class="form-group">
+               
+                <label for="exampleFormControlFile1">Photo de l'événement</label>
+                <input type="file" ng-model="event.coverPhoto" class="form-control-file" id="inputCover">
+            </div>
+        </form>
+        <div class="ui centered grid">
+            <button class="btn btn-primary btn-lg" type="submit" ng-class="{loading: saving}" ng-click="save()">Créer</button>
+
+            <a href="/#!/events"><button type="button" class="btn btn-secondary btn-lg">
+                Annuler
+                </button></a>
+        </div>
+
+    </form>
+</div>
+
+<br/>
+<br/>
