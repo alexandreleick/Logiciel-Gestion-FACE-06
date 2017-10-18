@@ -1,0 +1,26 @@
+
+
+<div class="ui fixed grid" style="margin-top:43px; z-index: 16777271 !important;" ng-controller="EventsCtrl">
+    <div class="computer tablet only row">
+        <div class="ui fixed icon borderless menu">
+
+            <div class="left menu" style="width: 300px">
+                <span>
+                    <a href="#!/events" class="brand item"><img class="ui tiny image" src="images/logo_black_full.png" alt="Face Logo" /></a>
+                </span>
+            </div>
+            <div class="right aligned right menu" style="width: 300px">
+                <div class="ui dropdown right aligned vertically fitted item">
+                    <i class="small circle icon green"></i> {{user.get('firstname')}} {{user.get('name')}} <i class="dropdown icon"></i>
+                    <div class="ui menu">
+                        <span>
+                            <a class="item">
+                                <i class="remove icon red"></i> Se déconnecter
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

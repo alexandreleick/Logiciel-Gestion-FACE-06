@@ -52,4 +52,13 @@ angular
       .otherwise({
         redirectTo: '/events'
       });
-  });
+  })
+    .run(function($rootScope, $location) {
+    
+    $rootScope.$on('$routeChangeStart', function(event, next) {
+        if (Parse.User.current() === null || Parse.User.current().get('name') === null) {
+            $location.path('/');
+        }
+        //      $rootScope.pageTitle = next.$$route.title;
+    });
+});

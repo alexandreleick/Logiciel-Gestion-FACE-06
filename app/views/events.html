@@ -1,3 +1,4 @@
+<div ng-include src="'views/header.html'"></div>
 <body bgcolor="#FDFDFD">
 
     <div class="ui raised very padded container segment">
@@ -25,6 +26,8 @@
                         <div class="card-body">
                             <h4 class="card-title">{{event.get('name')}}</h4>
                             <p class="card-text">Du {{event.get('dateStart')}} à {{event.get('hourStart')}} au {{event.get('dateEnd')}} à {{event.get('hourEnd')}}</p>
+                            <p class="card-text"><small class="text-muted">Pôle : {{event.get('sector')}}</small></p>
+
                             <a href="/#!/event/{{event.id}}" class="btn btn-primary">Voir plus d'informations</a>
                         </div>
                     </div>

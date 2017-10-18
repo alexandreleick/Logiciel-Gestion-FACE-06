@@ -4,6 +4,7 @@ angular.module('billetterieProjectApp')
     .controller('EventsCtrl', ['$scope','$location','APIManager', function($scope, $location, APIManager) {
 
         $scope.events = [];
+        $scope.user = Parse.User.current();
         $scope.loadingEvent = true;
         APIManager.getEvents().then( function(events) {
             $scope.events = events;
