@@ -49,6 +49,21 @@ angular
         controller: 'CreateUserCtrl',
         controllerAs: 'event'
       })
+    .when('/users', {
+        templateUrl: 'views/users.html',
+        controller: 'UsersCtrl',
+        controllerAs: 'event'
+      })
+    .when('/billetterie/event/:id', {
+        templateUrl: 'views/eventBilletterie.html',
+        controller: 'EventCtrl',
+        controllerAs: 'event'
+      })
+    .when('/billetterie/subscribe/:id', {
+        templateUrl: 'views/subscribeUser.html',
+        controller: 'SubscribeUser',
+        controllerAs: 'event'
+      })
       .otherwise({
         redirectTo: '/events'
       });
@@ -56,6 +71,8 @@ angular
     .run(function($rootScope, $location) {
     
     $rootScope.$on('$routeChangeStart', function(event, next) {
+        console.log(next.$$route.templateUrl)
+        if (next.$$route.templateUrl != "views/eventBilletterie.html" && next.$$route.templateUrl != "views/subscribeUser.html")
         if (Parse.User.current() === null || Parse.User.current().get('name') === null) {
             $location.path('/');
         }

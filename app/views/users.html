@@ -1,0 +1,48 @@
+<div ng-include src="'views/header.html'"></div>
+<br/><br/><br/><br/>
+<body bgcolor="#FDFDFD">
+
+    <div class="ui raised very padded container segment">
+        <div ng-repeat="user in users">
+            <div class="ui special cards">
+                <div class="card">
+                    <div class="blurring dimmable image">
+                        <div class="ui dimmer">
+                            <div class="content">
+                                <div class="center">
+                                    <div class="ui inverted button">Add Friend</div>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="{{user.get('profilPicture').url()}}">
+                    </div>
+                    <div class="content">
+                        <a class="header">{{user.get('name')}} {{user.get('firstname')}}</a>
+                    </div>
+                    <a>
+                        <i class="call icon"></i>{{user.get('phone')}}
+                    </a>
+                    <div class="extra content">
+                        <a>
+                            <i class="users icon"></i>
+                            {{user.get('sector')}}
+                        </a>
+                        <a><i class="write icon"></i></a>
+                        <a><i class="remove user icon"></i></a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="blurring dimmable image">
+                        <div class="ui inverted dimmer">
+                            <div class="content">
+                                <div class="center">
+                                    <div class="ui primary button">Add Friend</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,5 +1,3 @@
-<div ng-include src="'views/header.html'"></div>
-<br/><br/><br/><br/>
 <div class="ui raised very padded text container segment">
     <form class="ui equal width form" name="form">
 
@@ -19,20 +17,24 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputEmail4" class="col-form-label">Email</label>
-                <input ng-model="user.email" type="email" class="form-control" id="inputEmail4" placeholder="Email" required>
+                <input ng-model="user.mail" type="email" class="form-control" id="inputEmail4" placeholder="Email" required>
             </div>
             <div class="form-group col-md-6">
-                <label for="inputPassword4" class="col-form-label">Mot de passe</label>
-                <input ng-model="user.password" type="password" class="form-control" id="inputPassword4" placeholder="Mot de passe" required>
+                <label for="inputPassword4" class="col-form-label">Numéro de téléphone</label>
+                <input ng-model="user.phone" type="text" class="form-control" id="inputPassword4" placeholder="Numéro de téléphone" required>
             </div>
         </div>
         <div class="form-group">
-            <label for="inputAddress" class="col-form-label">Numéro de téléphone</label>
-            <input ng-model="user.phone" type="text" class="form-control" id="inputAddress" placeholder="Numéro de téléphone" required>
+            <label for="inputAddress" class="col-form-label">Filière</label>
+            <input ng-model="user.filiere" type="text" class="form-control" id="inputAddress" placeholder="Filière" required>
         </div>
         <div class="form-group">
-            <label for="inputAddress" class="col-form-label">Pôle</label>
-            <input ng-model="user.sector" type="text" class="form-control" id="inputAddress" placeholder="Pôle" required>
+            <label for="inputAddress" class="col-form-label">Campus</label>
+            <input ng-model="user.campus" type="text" class="form-control" id="inputAddress" placeholder="Campus" required>
+        </div>
+        <div class="form-group">
+            <label for="inputAddress" class="col-form-label">Numéro de carte étudiante</label>
+            <input ng-model="user.carteNumber" type="text" class="form-control" id="inputAddress" placeholder="Numéro de carte étudiante" required>
         </div>
         
 <!--

@@ -39,6 +39,7 @@ angular.module('billetterieProjectApp')
             newEvent.set('description', $scope.event.desc);
             newEvent.set('localisation', $scope.event.localisation);
             newEvent.set('sector', $scope.user.get('sector'));
+            newEvent.set('link', "#!/billetterie/subscribe/" + $scope.event.name);
             if ($scope.event.coverPhoto)
                 newEvent.set('coverPhoto', $scope.event.coverPhoto)
             newEvent.save();

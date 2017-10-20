@@ -28,20 +28,12 @@ angular.module('billetterieProjectApp')
         if (users.length > 0) {
             defer.resolve(users);
         }
-        var query = new Parse.Query('Follow');
+        var query = new Parse.Query('User');
         query.ascending('lastName');
         //query.equalTo('status', Constants.AgencyActionStatus.Joined);
-        query.equalTo('agency', Parse.User.current().get('agency'));
-        query.include('user');
-        query.include('user.photos');
         query.limit(1000);
         query.find({
             success: function(results) {
-                for (var i = 0; i <= results.length - 1; i++) {
-                    var user = results[i].get('user');
-                    results[i].genderPicture = user.get('gender') == "Femme" ? 'f' : 'm';
-                }
-                users = results;
                 defer.resolve(results);
             },
             error: function(error) {
@@ -77,7 +69,7 @@ angular.module('billetterieProjectApp')
     this.getEvent = function(id) {
         var defer = $q.defer();
         var query = new Parse.Query('events');
-        query.equalTo('objectId', id);
+        query.equalTo('name', id);
         query.first({
             success: function(event) {
                 defer.resolve(event);
