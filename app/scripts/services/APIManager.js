@@ -43,6 +43,23 @@ angular.module('billetterieProjectApp')
         return defer.promise;
     };
 
+    this.getPeoplesRegister = function (id) {
+        var defer = $q.defer();
+        var query = new Parse.Query('eventUsers');
+        query.equalTo('event', id);
+        query.find({
+            success: function (peoples) {
+                //            this.events = events;
+                defer.resolve(peoples);
+            },
+            error: function (error) {
+                console.warn(error);
+                defer.reject();
+            }
+        });
+        return defer.promise;
+    };
+    
     this.getEvents = function () {
         var defer = $q.defer();
         if (events == undefined) {
@@ -102,6 +119,19 @@ angular.module('billetterieProjectApp')
     this.deleteEvent = function(event) {
         var defer = $q.defer();
         event.destroy({
+            success: function() {
+                defer.resolve();
+            },
+            error: function(error) {
+                defer.reject(error);
+            }
+        });
+        return defer.promise;
+    };
+    
+    this.deleteUser = function(user) {
+        var defer = $q.defer();
+        user.destroy({
             success: function() {
                 defer.resolve();
             },

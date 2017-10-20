@@ -11,4 +11,10 @@ angular.module('billetterieProjectApp')
             console.log($scope.users);
             //$scope.loadingEvent = false;
         });
+        
+        $scope.deleteUser = function(index) {
+            APIManager.deleteUser($scope.users[index]).then(function() {
+                
+            });
+        }
     }]);

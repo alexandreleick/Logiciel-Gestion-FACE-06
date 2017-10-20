@@ -14,7 +14,37 @@
                     <p class="card-text">Du {{event.get('dateStart')}} à {{event.get('hourStart')}} au {{event.get('dateEnd')}} à {{event.get('hourEnd')}}</p>
                     <p class="card-text"><small class="text-muted">Pôle : {{event.get('sector')}}</small></p>
                     <a href="{{event.get('link')}}"><p class="card-text">Lien vers l'inscription</p></a>
-                    
+                    <table class="ui striped table">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>E-mail</th>
+                                <th>Numéro de téléphone</th>
+                                <th>Campus</th>
+                                <th>Filière</th>
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat="peopleRegister in peoplesRegister">
+                            <tr>
+                                <td>{{peopleRegister.get('name')}}</td>
+                                <td>{{peopleRegister.get('firstname')}}</td>
+                                <td>{{peopleRegister.get('mail')}}</td>
+                                <td>{{peopleRegister.get('phone')}}</td>
+                                <td>{{peopleRegister.get('campus')}}</td>
+                                <td>{{peopleRegister.get('filiere')}}</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr><th>{{peoplesRegister.length}} inscrit(s)</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                
+                            </tr></tfoot>
+                    </table>
                 </div>
             </div>
         </div>

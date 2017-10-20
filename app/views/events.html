@@ -4,36 +4,55 @@
 
     <div class="ui raised very padded container segment">
 
-        <div class="ui right aligned container">
-            <a ng-href="/#!/create/event" class="ui left icon basic button">
-                <i class="checked calendar icon"></i>Ajouter un événement
+        <div class="ui center aligned container">
+            <a ng-href="/#!/create/event" class="ui center icon basic button">
+                <i class="checked calendar icon"></i> Ajouter un événement
 
             </a>
-            <a ng-href="/#!/create/user" class="ui left icon basic button" ng-hide="!pass">
-                <i class="user icon"></i>Ajouter un utilisateur
+            <a ng-href="/#!/create/user" class="ui center icon basic button" ng-hide="!pass">
+                <i class="user icon"></i> Ajouter un utilisateur
 
             </a>
-             <a ng-href="/#!/users" class="ui left icon basic button" ng-hide="!pass">
-                <i class="address book icon"></i>Voir les utilisateurs
+            <a ng-href="/#!/users" class="ui center icon basic button" ng-hide="!pass">
+                <i class="address book icon"></i> Voir les utilisateurs
 
             </a>
         </div>
-<br/><br/>
+        <br/><br/>
 
         <div class="ui stackable centered grid">
             <div class="ui inverted dimmer" ng-hide="{{loadingEvent}}">
                 <div class="ui text loader">Récupération des évènements de l'agence</div>
             </div>
             <div ng-repeat="event in events" class="inline">
-                <div class="card-group">
-                    <div class="card" style="width: 20rem;">
-                        <img class="card-img-top" src="{{event.get('coverPhoto').url()}}" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title">{{event.get('name')}}</h4>
-                            <p class="card-text">Du {{event.get('dateStart')}} à {{event.get('hourStart')}} au {{event.get('dateEnd')}} à {{event.get('hourEnd')}}</p>
-                            <p class="card-text"><small class="text-muted">Pôle : {{event.get('sector')}}</small></p>
-
-                            <a href="/#!/event/{{event.get('name')}}" class="btn btn-primary">Voir plus d'informations</a>
+                <div class="ui link cards">
+                    <div class="card">
+                        <div class="extra content">
+                            <i class="right floated trash icon red"></i>
+                            <i class="right floated options icon yellow"></i>
+                            <i class="right floated mail icon blue"></i>
+                        </div>
+                        <div class="ui fluid image">
+                            <a href="/#!/event/{{event.get('name')}}">
+                                <img src="{{event.get('coverPhoto').url()}}" style="height: 200px; overflow: hidden; object-fit:cover">
+                            </a>
+                        </div>
+                        <div class="content">
+                            <a href="/#!/event/{{event.get('name')}}">
+                                <div class="header">{{event.get('name')}}</div>
+                            </a>
+                            <div class="meta">
+                                <a>Pôle {{event.get('sector')}}</a>
+                            </div>
+                            <div class="description">
+                                {{event.get('description')}}
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <i class="left floated calendar icon"></i>
+                            <div class="center floated">
+                                {{event.get('dateStart')}} - {{event.get('dateEnd')}} 
+                            </div>
                         </div>
                     </div>
                 </div>

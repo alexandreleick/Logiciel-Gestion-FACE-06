@@ -14,7 +14,7 @@ angular.module('billetterieProjectApp')
         console.log("ici");
         $scope.pass = false;
         var user = Parse.User.current();
-        if (user.get('sector') == "Presidence")
+        if (user.get('sector') === "Presidence" || user.get('sector') === "Informatique")
             $scope.pass = true;
         console.log(user.get('sector'));
         console.log($scope.pass);

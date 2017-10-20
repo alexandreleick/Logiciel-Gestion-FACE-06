@@ -1,9 +1,7 @@
 'use strict';
-$('.ui.dropdown')
-  .dropdown();
 
 angular.module('billetterieProjectApp')
- .controller('HeaderController', function ($scope, $location) {
+    .controller('HeaderController', function ($scope, $location) {
 
     $scope.messagesNumber = "";
 
@@ -11,9 +9,12 @@ angular.module('billetterieProjectApp')
     $scope.firstName = $scope.user.get('firstName');
     $scope.lastName = $scope.user.get('lastName');
     console.log( $scope.lastName);
+    $(function() {
+        $('.ui.dropdown').dropdown();
+    });
     $scope.logout = function() {
-      AgencyService.logOut().then( function() {
-          $location.path('/');
-      });
-  };
+        AgencyService.logOut().then( function() {
+            $location.path('/');
+        });
+    };
 });
