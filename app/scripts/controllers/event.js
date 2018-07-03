@@ -6,6 +6,7 @@ angular.module('billetterieProjectApp')
         $scope.event = [];
         $scope.peoplesRegister = [];
         $scope.numberOfTicket = 0
+        
         var calendar = ["", "Jan.", "Fev.", "Mar.", "Avr.", "Mai", "Juin", "Juil.", "Aou.", "Sep.", "Oct.", "Nov.", "Dec."];
         $scope.filiere = {'DROIT': 0 , 'ISEM': 0 , 'IAE': 0 , 'POLE SANTE':0 , 'STAPS':0 , 'POLYTECH':0 , 'MIAGE':0 , 'IUT':0 , 'SCIENCES': 0  , 'ECOLES PRIVÉES': 0  , 'LASH':0 , 'ESPE':0 , 'BTS':0, 'Autre':0 };
         APIManager.getEvent($routeParams.id).then(function(event) {
@@ -88,3 +89,4 @@ setTimeout(function(){
         }, 3000);
 
     }]);
+

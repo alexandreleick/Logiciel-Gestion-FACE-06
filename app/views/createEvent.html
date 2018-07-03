@@ -1,4 +1,4 @@
-<!--
+
 <script>
 $('.ui.dropdown')
 .dropdown();
@@ -8,12 +8,12 @@ $('#inputCover').click();
 });
 
 </script>
--->
+
 
 <!--<div ng-include src="'views/header.html'"></div>-->
 
 <div ng-include src="'views/header.html'"></div>
-<br/><br/><br/><br/>
+<!-- <br/><br/><br/><br/>
 <div class="ui raised very padded text container segment">
     <form class="ui equal width form" name="form">
 
@@ -93,4 +93,101 @@ $('#inputCover').click();
 </div>
 
 <br/>
-<br/>
+<br/> -->
+
+
+<form class="ui form" {{action 'submit' on='submit' }} name="form">
+        <br/><br/><br/><br/>
+    <div class="ui padded segment"> 
+        <center class="ui dividing header">{{title}} un événement</center>
+      <h6 class="ui horizontal divider header">
+        <i class="ticket icon"></i>
+        Photo de l'événement
+      </h6>
+      <br />
+      <div class="ui grid">
+            
+            <div class="ui centered container" id="divUpload">
+                <div class="ui center aligned segment container" style="background-color: rgb(242, 242, 242)" ng-hide="loadingCoverPhoto">
+                    <div class="ui inverted dimmer">
+                        <div class="ui medium text loader">Chargement en cours</div>
+                    </div>
+                    <br />
+                    <a href="">
+                        <h2 class="ui icon header">
+                            <i class="cloud upload icon grey"></i>
+                            <div class="content">
+                                <small style="color: dimgrey">Upload une photo</small>
+                            </div>
+                        </h2>
+                    </a>
+                </div>
+                <div data-tooltip="Cliquez pour changer votre photo de couverture" data-position="bottom center">
+                    <div class="ui inverted dimmer" ng-show="event.coverPhoto" required>
+                        <div class="ui medium text loader">Upload une photo</div>
+                    </div>
+                    <a href="">
+                        <img id="imgs" class="ui fluid rounded image" src="{{event.coverPhoto.url()}}">
+                    </a>
+                </div>
+
+            </div>
+
+            <br />
+            <input type="file" id="inputCover" style="display: none">
+        </div>
+    </br>
+        <h4 class="ui horizontal divider header">
+                <i class="ticket icon"></i>
+                Informations de l'évènement
+            </h4>
+      <div class="form-row">
+            <div class="col">
+                <label for="firstname" class="col-form-label">Nom de l'évènement</label>
+                <input type="text" ng-model="event.name" class="form-control" id="validationDefault01" placeholder="Nom de l'événement" required>
+            </div>
+        </div>
+        <br/>
+        <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="validationDefault04">Date de début</label>
+                    <input type="text" ng-model="event.dateStart" class="form-control" id="validationDefault04" placeholder="DD/MM/YYYY" required>
+                </div>
+                <div class="form-group col-md-6">
+                        <label for="validationDefault04">Heure de début</label>
+                        <input type="text" ng-model="event.hourStart" class="form-control" id="validationDefault04" placeholder="HH:MM" required>
+                </div>
+            </div>
+            <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="validationDefault04">Date de fin</label>
+                        <input type="text" ng-model="event.dateEnd" class="form-control" id="validationDefault04" placeholder="DD/MM/YYYY" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                            <label for="validationDefault04">Heure de fin</label>
+                            <input type="text" ng-model="event.hourEnd" class="form-control" id="validationDefault04" placeholder="HH:MM" required>
+                    </div>
+                </div>
+      <h4 class="ui horizontal divider header">
+          <i class="ticket icon"></i>
+          Informations Supplémentaires
+      </h4>
+      <div class="form-group">
+            <label for="validationDefault03">Lieu</label>
+                <input type="text" ng-model="event.localisation" class="form-control" id="validationDefault03" placeholder="Lieu" required>
+      </br>
+                <label for="exampleFormControlTextarea1">Description</label>
+                <textarea class="form-control" ng-model="event.desc" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        
+      <div class="ui centered grid">
+
+      <div class="ui large buttons">
+        <button class="btn btn-primary btn-lg" type="submit" ng-class="{loading: saving}" ng-click="save()">{{title}}</button>
+            <div class="or"></div>
+            <a href="/#!/events"><button class="fluid ui button">Annuler</button></a>
+          </div>
+      </div>
+        
+    </div>
+  </form>
