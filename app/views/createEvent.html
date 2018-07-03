@@ -17,7 +17,7 @@ $('#inputCover').click();
 <div class="ui raised very padded text container segment">
     <form class="ui equal width form" name="form">
 
-        <h3 class="ui dividing header">Créer un événement</h3>
+        <h3 class="ui dividing header">{{title}} un événement</h3>
         <br/>
 
         <div class="row">
@@ -82,7 +82,7 @@ $('#inputCover').click();
             </div>
         </form>
         <div class="ui centered grid">
-            <button class="btn btn-primary btn-lg" type="submit" ng-class="{loading: saving}" ng-click="save()">Créer</button>
+            <button class="btn btn-primary btn-lg" type="submit" ng-class="{loading: saving}" ng-click="save()">{{title}}</button>
 
             <a href="/#!/events"><button type="button" class="btn btn-secondary btn-lg">
                 Annuler

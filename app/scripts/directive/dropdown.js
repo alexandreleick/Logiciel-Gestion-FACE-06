@@ -1,5 +1,5 @@
 angular.module('billetterieProjectApp')
-    .directive("dropdown", function() {
+    .directive("jq-dropdown", function() {
     return {
         restrict: "AEC",
         link: function(scope, element, attrs) {

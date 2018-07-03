@@ -7,6 +7,12 @@
             <div ng-repeat="user in users track by $index">
                 <div class="ui link cards">
                     <div class="card">
+                        <div class="extra content">
+                            <span>
+                                <i class="user icon blue"></i>
+                                {{user.get('sector')}}
+                            </span>
+                        </div>
                         <div class="ui fluid image">
                             <img src="{{user.get('profilPicture').url()}}" style="height: 200px; overflow: hidden; object-fit:cover">
                         </div>
@@ -19,13 +25,15 @@
                             </div>
                         </div>
                         <div class="extra content">
-                            <button class="right floated ui icon button red" ng-click="deleteUser($index)">
-                                <i class="trash icon white"></i>
-                            </button>
-
                             <span>
-                                <i class="user icon"></i>
-                                {{user.get('sector')}}
+                                <button class="left floated ui basic button">
+                                    <i class="edit icon green"></i>
+                                    Modifier
+                                </button>
+                                <button class="right floated ui basic button">
+                                    <i class="icon trash red"></i>
+                                    Supprimer
+                                </button>
                             </span>
                         </div>
                     </div>

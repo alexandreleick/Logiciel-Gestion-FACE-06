@@ -1,19 +1,81 @@
 <div ng-include src="'views/header.html'"></div>
-<br/><br/><br/><br/>
+<br/><br/>
 <body bgcolor="#FDFDFD">
 
     <div class="ui raised very padded container segment">
 
-        <div class="ui right aligned container">
-            <div class="card mb-3">
+        <div class="ui  container">
+            <div class="card mb-2">
                 <img class="card-img-top" src="{{event.get('coverPhoto').url()}}" alt="Card image cap">
-                <div class="card-body">
-                    <h4 class="card-title">{{event.get('name')}}</h4>
-                    <p class="card-text">{{event.get('description')}}</p>
-                    <p class="card-text">{{event.get('localisation')}}</p>
-                    <p class="card-text">Du {{event.get('dateStart')}} à {{event.get('hourStart')}} au {{event.get('dateEnd')}} à {{event.get('hourEnd')}}</p>
-                    <p class="card-text"><small class="text-muted">Pôle : {{event.get('sector')}}</small></p>
-                    <a href="{{event.get('link')}}"><p class="card-text">Lien vers l'inscription</p></a>
+                <div class="card-body">  
+                    <div class="ui statistics">
+                        <div class="statistic">
+                            <div class="value">
+                                {{minDay}}
+                            </div>
+                            <div class="label">
+                                {{minMonth}}
+                            </div>
+
+                        </div>
+                        <div class="statistic four">
+                            <h1 class="ui four header center">{{event.get('name')}} - Nice</h1>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                    <div class="sixteen wide column">
+                        <div class="ui grid">
+
+                            <div class="eleven wide computer eleven wide tablet sixteen wide mobile column">
+                                <div class="event description"><p></p></div></div> 
+                            <div class="five wide computer five wide tablet sixteen wide mobile column">
+                                <div class="info-title margin-top margin-bottom">Date</div> 
+                                <div class="info">
+                                    {{minDay}} {{minMonth}} {{minYear}} (Début)
+                                </div> <div class="info">
+                                {{maxDay}} {{maxMonth}} {{maxYear}} (Fin)
+                                </div></div></div></div>
+                    <div class="sixteen wide column right aligned">
+                        <div class="ui grid">
+                            <div class="eleven wide computer eight wide tablet sixteen wide mobile column mobile-hidden">
+                            </div> 
+                        </div>
+                    </div>
+                    <h4 class="ui large horizontal divider header">
+                        <i class="large announcement icon"></i>
+                        Description
+                    </h4>
+                    <div class="ui piled segment">
+                        <p>{{event.get('description')}}</p>
+                    </div>
+                    <h4 class="ui large horizontal divider header">
+                        <i class="pie chart icon"></i>
+                        Statistiques
+                    </h4>
+                    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+
+                    <h4 class="ui large horizontal divider header">
+                        <i class="child icon"></i>
+                        Participants
+                    </h4>
+
+
+
+
+
+                    <!--
+<h4 class="card-title">{{event.get('name')}}</h4>
+<p class="card-text">{{event.get('description')}}</p>
+<p class="card-text">{{event.get('localisation')}}</p>
+<p class="card-text">Du {{event.get('dateStart')}} à {{event.get('hourStart')}} au {{event.get('dateEnd')}} à {{event.get('hourEnd')}}</p>
+<p class="card-text"><small class="text-muted">Pôle : {{event.get('sector')}}</small></p>
+<a href="{{event.get('link')}}"><div class="ui vertical animated button" tabindex="0">
+<div class="visible content">S'inscrire</div>
+<div class="hidden content">
+<i class="shop icon"></i>
+</div>
+</div></a>
+-->
                     <table class="ui striped table">
                         <thead>
                             <tr>
@@ -42,7 +104,7 @@
                                 <th></th>
                                 <th></th>
                                 <th></th>
-                                
+
                             </tr></tfoot>
                     </table>
                 </div>

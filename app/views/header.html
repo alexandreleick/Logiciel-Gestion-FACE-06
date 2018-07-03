@@ -1,22 +1,42 @@
+<script>
+    $('.ui.dropdown')
+        .dropdown({});
+</script>
+
 <div class="ui fixed grid" style="margin-top:35px; z-index: 16777271 !important;" ng-controller="EventsCtrl">
     <div class="computer tablet only row">
         <div class="ui fixed icon borderless menu">
 
             <div class="left menu" style="width: 300px">
                 <span>
-                    <a href="#!/events" class="brand item"><img class="ui tiny image" src="images/logo_face_06.jpg" alt="Face Logo" /></a>
+                    <a href="#!/events" class="brand item"><img class="ui mini circular image" src="images/logo_face_06.jpg" alt="Face Logo" /></a>
                 </span>
             </div>
-            <div class="right aligned right menu" style="width: 200px">
+            <div class="right aligned right menu" style="width: 400px">
                 <div class="right aligned vertically fitted item">
-                    <i class="small circle icon green"></i> {{user.get('firstname')}} {{user.get('name')}} <i class="ui dropdown icon"></i>
-                    <div class="ui menu">
-                        <span>
-                            <a class="item">
-                                <i class="remove icon red"></i> Se déconnecter
-                            </a>
-                        </span>
-                    </div>
+                    <h4 class="ui header"></h4>
+                    <span>
+                        <div class="ui inline dropdown">
+                            <div class="text">
+                                <img class="ui tiny circular image" src="{{user.get('profilPicture').url()}}">
+                                {{user.get('firstname')}} {{user.get('name')}}
+                            </div>
+                            <i class="dropdown icon"></i>
+                            <div class="ui menu">
+                                <a class="item" ng-click="logOut()">
+                                    <i class="remove user icon red" ></i>
+                                    Se déconnecter
+                                </a>
+                                <a href="/#!/modify/user/{{user.get('name')}}" class="item" >
+                                <i class="renome user icon blue"></i>
+                                Modifier mon profil</a>
+                            </div>
+                        </div>
+                    </span>
+                    <!--
+<a class="brand item" data-inverted="" data-tooltip="Se déconnecter" data-position="bottom center" ng-click="logOut()"><img class="ui tiny circular image" src="{{user.get('profilPicture').url()}}">
+<span> &nbsp; {{user.get('firstname')}} {{user.get('name')}}</span></a>
+-->
                 </div>
             </div>
         </div>

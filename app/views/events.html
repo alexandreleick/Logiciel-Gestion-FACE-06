@@ -24,13 +24,15 @@
             <div class="ui inverted dimmer" ng-hide="{{loadingEvent}}">
                 <div class="ui text loader">Récupération des évènements de l'agence</div>
             </div>
-            <div ng-repeat="event in events" class="inline">
+            <div ng-repeat="event in events track by $index" class="inline">
                 <div class="ui link cards">
                     <div class="card">
                         <div class="extra content">
-                            <i class="right floated trash icon red"></i>
-                            <i class="right floated options icon yellow"></i>
-                            <i class="right floated mail icon blue"></i>
+                            <i class="left floated calendar icon blue"></i>
+                            <div class="center floated">
+                                {{event.get('dateStart')}} - {{event.get('dateEnd')}} 
+                            </div>
+
                         </div>
                         <div class="ui fluid image">
                             <a href="/#!/event/{{event.get('name')}}">
@@ -44,15 +46,19 @@
                             <div class="meta">
                                 <a>Pôle {{event.get('sector')}}</a>
                             </div>
-                            <div class="description">
-                                {{event.get('description')}}
+                            <div class="numberOfParticipant">
+                                {{getNumberOfParticipants(event)}}
                             </div>
                         </div>
                         <div class="extra content">
-                            <i class="left floated calendar icon"></i>
-                            <div class="center floated">
-                                {{event.get('dateStart')}} - {{event.get('dateEnd')}} 
-                            </div>
+                            <a href="/#!/modify/event/{{event.get('name')}}"><button class="left floated ui basic button" ng-hide="event.get('isModified')">
+                                <i class="edit icon green"></i>
+                                Modifier
+                            </button></a>
+                            <button class="right floated ui basic button" ng-click="deleteEvent($index)" ng-hide="event.get('isModified')">
+                                <i class="icon trash red"></i>
+                                Supprimer
+                                </button>                             
                         </div>
                     </div>
                 </div>

@@ -1,9 +1,14 @@
+<script>
+    $('.ui.dropdown')
+        .dropdown({});
+</script>
+<!-- 
 <div class="ui raised very padded text container segment">
     <form class="ui equal width form" name="form">
 
-        <h3 class="ui dividing header">Créer un user</h3>
+        <h3 class="ui dividing header">Inscription à l'événement : {{event.get('name')}}</h3>
         <br/>
-
+        <img id='imgToExport' src="event.get('coverPhoto')" style='display:none'/>
         <div class="form-row">
             <div class="col">
                 <label for="firstname" class="col-form-label">Prénom</label>
@@ -26,32 +31,151 @@
         </div>
         <div class="form-group">
             <label for="inputAddress" class="col-form-label">Filière</label>
-            <input ng-model="user.filiere" type="text" class="form-control" id="inputAddress" placeholder="Filière" required>
+            <select class="ui fluid search selection dropdown" ng-model="user.filiere" datas="filiere">
+                <option class="item" value="">Filière</option>
+                <option class="item" value="{{fili}}" ng-repeat="fili in filiere" required>{{fili}}</option>
+            </select>
+
+        </div>
+        <div class="field" ng-show="user.filiere == 'Autre'">
+            <label>Autre filière</label>
+            <input type="text" ng-model="user.otherFiliere" placeholder="Entrez une autre filière si celle-ci ne figure pas dans la liste">
         </div>
         <div class="form-group">
-            <label for="inputAddress" class="col-form-label">Campus</label>
-            <input ng-model="user.campus" type="text" class="form-control" id="inputAddress" placeholder="Campus" required>
+            <label for="inputAddress" class="col-form-label">Campus / Ecoles</label>
+            <select class="ui fluid search selection dropdown" ng-model="user.campus" datas="campus">
+                <option class="item" value="">Campus</option>
+                <option class="item" value="{{camp}}" ng-repeat="camp in campus" required>{{camp}}</option>
+            </select>
+
+        </div>
+        <div class="field" ng-show="user.campus == 'Autre'">
+            <label>Autre Campus</label>
+            <input type="text" ng-model="user.otherCampus" placeholder="Entrez un autre campus si celui-ci ne figure pas dans la liste">
+        </div>
+        <div class="form-group">
+            <label for="inputAddress" class="col-form-label">Numéro de carte étudiante</label>
+            <input ng-model="user.carteNumber" type="text" class="form-control" id="inputAddress" placeholder="Numéro de carte étudiante" required>
+        </div> -->
+
+        
+        <!--
+<div class="dropdown">
+<label for="dropdownMenuButton" class="col-form-label">Pôle</label>
+<br/>
+<button ng-model="user.sector" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Pôle
+</button>
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<a class="dropdown-item" href="#">Présidence</a>
+<a class="dropdown-item" href="#">Communication</a>
+<a class="dropdown-item" href="#">Informatique</a>
+</div>
+</div>
+-->
+        <!-- <br/>
+        <a href="#!/billetterie/event/{{event.get('name')}}"></a><button type="submit" class="btn btn-primary" ng-click="save()">Créer</button>
+    </form>
+</div> -->
+
+
+<form class="ui form" {{action 'submit' on='submit' }} name="form">
+        <br/><br/><br/><br/><br/><br/><br/><br/>
+        <center>
+        <div class="ui steps">
+                <div class="step">
+                  <i class="calendar alternate icon"></i>
+                  <div class="content">
+                    <div class="title">Evenement</div>
+                    <div class="description">Les informations de l'événement</div>
+                  </div>
+                </div>
+                <div class="active step">
+                  <i class="payment icon"></i>
+                  <div class="content">
+                    <div class="title">Reservation</div>
+                    <div class="description">Entrez vos informations</div>
+                  </div>
+                </div>
+                <div class="disabled step">
+                  <i class="info icon"></i>
+                  <div class="content">
+                    <div class="title">Confirmation</div>
+                  </div>
+                </div>
+              </div>
+            </center>
+    <div class="ui padded segment"> 
+        <center class="ui dividing header">Inscription à l'événement : {{event.get('name')}}</center>
+        <img class="card-img-top" src="{{event.get('coverPhoto').url()}}" alt="Card image cap">
+      <h6 class="ui horizontal divider header">
+        <i class="ticket icon"></i>
+        Informations Personnelles
+      </h6>
+      <div class="form-row">
+            <div class="col">
+                <label for="firstname" class="col-form-label">Prénom</label>
+                <input ng-model="user.firstname" type="text" id="firstname" class="form-control" placeholder="Prénom" required>
+            </div>
+            <div class="col">
+                <label for="name" class="col-form-label">Nom</label>
+                <input ng-model="user.name" type="text" id="name" class="form-control" placeholder="Nom" required>
+            </div>
+        </div>
+        <br/>
+        <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4" class="col-form-label">Email</label>
+                    <input ng-model="user.mail" type="email" class="form-control" id="inputEmail4" placeholder="Email" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4" class="col-form-label">Numéro de téléphone</label>
+                    <input ng-model="user.phone" type="text" class="form-control" id="inputPassword4" placeholder="Numéro de téléphone" required>
+                </div>
+            </div>
+      <h4 class="ui horizontal divider header">
+          <i class="ticket icon"></i>
+          Informations Etudiantes
+      </h4>
+      <div class="form-group">
+            <label for="inputAddress" class="col-form-label">Filière</label>
+            <select class="ui fluid search selection dropdown" ng-model="user.filiere" datas="filiere">
+                <option class="item" value="">Filière</option>
+                <option class="item" value="{{fili}}" ng-repeat="fili in filiere" required>{{fili}}</option>
+            </select>
+
+        </div>
+        <div class="field" ng-show="user.filiere == 'Autre'">
+            <label>Autre filière</label>
+            <input type="text" ng-model="user.otherFiliere" placeholder="Entrez une autre filière si celle-ci ne figure pas dans la liste">
+        </div>
+        <div class="form-group">
+            <label for="inputAddress" class="col-form-label">Campus / Ecoles</label>
+            <select class="ui fluid search selection dropdown" ng-model="user.campus" datas="campus">
+                <option class="item" value="">Campus</option>
+                <option class="item" value="{{camp}}" ng-repeat="camp in campus" required>{{camp}}</option>
+            </select>
+
+        </div>
+        <div class="field" ng-show="user.campus == 'Autre'">
+            <label>Autre Campus</label>
+            <input type="text" ng-model="user.otherCampus" placeholder="Entrez un autre campus si celui-ci ne figure pas dans la liste">
         </div>
         <div class="form-group">
             <label for="inputAddress" class="col-form-label">Numéro de carte étudiante</label>
             <input ng-model="user.carteNumber" type="text" class="form-control" id="inputAddress" placeholder="Numéro de carte étudiante" required>
         </div>
-        
-<!--
-        <div class="dropdown">
-            <label for="dropdownMenuButton" class="col-form-label">Pôle</label>
-            <br/>
-            <button ng-model="user.sector" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Pôle
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Présidence</a>
-                <a class="dropdown-item" href="#">Communication</a>
-                <a class="dropdown-item" href="#">Informatique</a>
-            </div>
-        </div>
--->
-        <br/>
-        <button type="submit" class="btn btn-primary" ng-click="save()">Créer</button>
-    </form>
-</div>
+      <p>
+      </p>
+      <h4 class="ui horizontal divider header">
+            <i class="ticket icon"></i>
+            Finalisation
+        </h4>
+      <div class="center aligned">
+          <center>
+                <a href="#!/billetterie/event/{{event.get('name')}}"></a><button type="submit" class="fluid ui teal submit button " ng-click="save()">Reserver mon billet</button>
+        <!-- <a href="#!/billetterie/event/{{event.get('name')}}"></a><button type="submit" class="btn btn-primary" ng-click="save()">Créer</button> -->
+        </center>
+      </div>
+    </div>
+  </form>

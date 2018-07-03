@@ -42,6 +42,27 @@ angular.module('billetterieProjectApp')
         });
         return defer.promise;
     };
+    
+    this.getUser = function(userId) {
+        var defer = $q.defer();
+        var query = new Parse.Query('_User');
+        //query.ascending('name');
+        query.equalTo('name', userId);
+        console.log(userId);
+        //query.equalTo('status', Constants.AgencyActionStatus.Joined);
+        //query.limit(1000);
+        query.first({
+            success: function(results) {
+                console.log(results);
+                defer.resolve(results);
+            },
+            error: function(error) {
+                console.log(error);
+                defer.reject(error);
+            }
+        });
+        return defer.promise;
+    };
 
     this.getPeoplesRegister = function (id) {
         var defer = $q.defer();

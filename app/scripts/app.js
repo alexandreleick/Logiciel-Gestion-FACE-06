@@ -8,6 +8,7 @@
  *
  * Main module of the application.
  */
+
 angular
   .module('billetterieProjectApp', [
     'ngAnimate',
@@ -47,6 +48,16 @@ angular
     .when('/create/user', {
         templateUrl: 'views/createUser.html',
         controller: 'CreateUserCtrl',
+        controllerAs: 'event'
+      })
+    .when('/modify/user/:id', {
+        templateUrl: 'views/createUser.html',
+        controller: 'CreateUserCtrl',
+        controllerAs: 'event'
+      })
+    .when('/modify/event/:id', {
+        templateUrl: 'views/createEvent.html',
+        controller: 'CreateEventCtrl',
         controllerAs: 'event'
       })
     .when('/users', {

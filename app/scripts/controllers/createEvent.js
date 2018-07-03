@@ -1,10 +1,26 @@
 'user strict';
 
 angular.module('billetterieProjectApp')
-    .controller('CreateEventCtrl', ['$scope','$location', function($scope, $location) {
+    .controller('CreateEventCtrl', ['$scope','$location','$routeParams','APIManager', function($scope, $location, $routeParams, APIManager) {
         $scope.event = [];
         $scope.user = Parse.User.current();
-       
+        $scope.title = "Créer";
+        if ($routeParams.id) {
+            console.log('Existe');
+            APIManager.getEvent($routeParams.id).then(function(event) {
+                console.log(event);
+                $scope.event.name = event.get('name');
+                $scope.event.dateStart = event.get('dateStart');
+                $scope.event.dateEnd = event.get('dateEnd');
+                $scope.event.hourStart = event.get('hourStart');
+                $scope.event.hourEnd = event.get('hourEnd');
+                $scope.event.desc = event.get('description');
+                $scope.event.localisation = event.get('localisation');
+                $scope.event.coverPhoto = event.get('coverPhoto');
+                $scope.event.id = event.id;
+                $scope.title = "Modifier";
+            });
+        }
         if ($('#inputCover')[0] !== undefined) {
             $('#inputCover')[0].onchange = function() {
                 $scope.$apply(function() {
@@ -31,6 +47,8 @@ angular.module('billetterieProjectApp')
         $scope.save = function() {
             var NewEvent = Parse.Object.extend("events");
             var newEvent = new NewEvent();
+            if ($scope.event.id)
+                newEvent.set('objectId', $scope.event.id);
             newEvent.set('name', $scope.event.name);
             newEvent.set('dateStart', $scope.event.dateStart);
             newEvent.set('dateEnd', $scope.event.dateEnd);
@@ -42,7 +60,16 @@ angular.module('billetterieProjectApp')
             newEvent.set('link', "#!/billetterie/subscribe/" + $scope.event.name);
             if ($scope.event.coverPhoto)
                 newEvent.set('coverPhoto', $scope.event.coverPhoto)
-            newEvent.save();
-            console.log($scope.event);
+            newEvent.save(null, {
+                success: function(event) {
+                    swal($scope.event.name, "L'événement a été " + $scope.title.toLowerCase() + " avec succès !", "success");
+                    $scope.$apply(function() {
+                    $location.path("/event/" + $scope.event.name);
+                        
+                    });
+                    console.log($scope.event);
+                }
+            });
+
         }
     }]);
