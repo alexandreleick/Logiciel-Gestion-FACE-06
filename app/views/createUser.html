@@ -1,11 +1,17 @@
+
 <script>
     $('.ui.dropdown')
-        .dropdown({});
+    .dropdown();
+        
+    $("#divUpload").on("click", function() {
+     $('#inputCover').click();
+    });
+        
 </script>
 
 <div ng-include src="'views/header.html'"></div>
 <br/><br/><br/><br/>
-<div class="ui raised very padded text container segment">
+<!-- <div class="ui raised very padded text container segment">
     <form class="ui equal width form" name="form">
 
         <h3 class="ui dividing header">{{info}}</h3>
@@ -34,13 +40,22 @@
         <div class="form-group">
             <label for="inputAddress" class="col-form-label">Numéro de téléphone</label>
             <input ng-model="user.phone" type="text" class="form-control" id="inputAddress" placeholder="Numéro de téléphone" required>
-        </div>
-        <div class="form-group">
+        </div> -->
+        <!-- <div class="form-group">
             <label for="inputAddress" class="col-form-label">Pôle</label>
             <select class="ui fluid search selection dropdown" ng-model="user.sector" datas="poles">
                 <option class="item" value="{{pole}}" ng-repeat="pole in poles" required>{{pole}}</option>
             </select>
-        </div>
+            
+        </div> -->
+        <!-- <div class="form-group">
+                <label for="inputPole" class="col-form-label">Pôle</label>
+                <select class="ui fluid search selection dropdown" ng-model="user.sector" datas="poles">
+                    <option class="item" value="">Pôle</option>
+                    <option class="item" value="{{pole}}" ng-repeat="pole in poles" required>{{pole}}</option>
+                </select>
+    
+            </div> -->
         
 <!--
         <div class="dropdown">
@@ -56,7 +71,7 @@
             </div>
         </div>
 -->
-        <form>
+        <!-- <form>
             <div class="form-group">
                
                 <label for="exampleFormControlFile1">Photo de profil</label>
@@ -66,4 +81,98 @@
         <br/>
         <button type="submit" class="btn btn-primary" ng-click="save()">Créer</button>
     </form>
-</div>
+</div> -->
+
+<form class="ui form" {{action 'submit' on='submit' }} name="form">
+        <br/><br/><br/><br/>
+    <div class="ui padded segment"> 
+        <center class="ui dividing header">{{info}}</center>
+      <h6 class="ui horizontal divider header">
+        <i class="ticket icon"></i>
+        Photo de profil
+      </h6>
+      <br />
+      <div class="ui grid">
+            
+            <div class="ui centered container" id="divUpload">
+                <div class="ui center aligned segment container" style="background-color: rgb(242, 242, 242)" ng-hide="loadingCoverPhoto">
+                    <div class="ui inverted dimmer">
+                        <div class="ui medium text loader">Chargement en cours</div>
+                    </div>
+                    <br />
+                    <a href="">
+                        <h2 class="ui icon header">
+                            <i class="cloud upload icon grey"></i>
+                            <div class="content">
+                                <small style="color: dimgrey">Upload une photo</small>
+                            </div>
+                        </h2>
+                    </a>
+                </div>
+                <div data-tooltip="Cliquez pour changer votre photo de couverture" data-position="bottom center">
+                    <div class="ui inverted dimmer" ng-show="user.profilPicture" required>
+                        <div class="ui medium text loader">Upload une photo</div>
+                    </div>
+                    <a href="">
+                        <img id="imgs" class="ui fluid rounded image" src="{{user.profilPicture.url()}}">
+                    </a>
+                </div>
+
+            </div>
+
+            <br />
+            <input type="file" id="inputCover" style="display: none">
+        </div>
+    </br>
+        <h4 class="ui horizontal divider header">
+                <i class="ticket icon"></i>
+                Informations Personnelles
+            </h4>
+      <div class="form-row">
+            <div class="col">
+                    <label for="firstname" class="col-form-label">Prénom</label>
+                    <input ng-model="user.firstname" type="text" id="firstname" class="form-control" placeholder="Prénom" required>
+                </div>
+                <div class="col">
+                    <label for="name" class="col-form-label">Nom</label>
+                    <input ng-model="user.name" type="text" id="name" class="form-control" placeholder="Nom" required>
+                </div>
+        </div>
+        <br/>
+        <div class="form-row">
+                <div class="col">
+                        <label for="inputAddress" class="col-form-label">Numéro de téléphone</label>
+                        <input ng-model="user.phone" type="text" class="form-control" id="inputAddress" placeholder="Numéro de téléphone" required>
+                </div>
+                <div class="col">
+                        <label for="inputPole" class="col-form-label">Pôle</label>
+                        <select class="ui fluid search selection dropdown" ng-model="user.sector" datas="poles">
+                            <option class="item" value="">Pôle</option>
+                            <option class="item" value="{{pole}}" ng-repeat="pole in poles" required>{{pole}}</option>
+                        </select>
+            
+                </div>
+            </div>
+      <h4 class="ui horizontal divider header">
+          <i class="ticket icon"></i>
+          Mes Identifiants
+      </h4>
+      <div class="form-group">
+            <div class="col">
+                    <label for="inputEmail4" class="col-form-label">Email</label>
+                    <input ng-model="user.email" type="email" class="form-control" id="inputEmail4" placeholder="Email" required>
+                </div>
+            </br>
+                <div class="col">
+                    <label for="inputPassword4" class="col-form-label">Mot de passe</label>
+                    <input ng-model="user.password" type="password" class="form-control" id="inputPassword4" placeholder="Mot de passe" required>
+                </div>        
+    </div>
+    </br></br>
+      <div class="ui centered grid">
+            <button type="submit" class="btn btn-primary" ng-click="save()">{{saveInfo}}</button>
+      </div>
+    
+    </div>
+  </form>
+</body>

@@ -69,6 +69,8 @@ angular.module('billetterieProjectApp')
                 }
               }
             }
+            $scope.event.localisation = place.formatted_address;
+            console.log("SCOPE " + $scope.event.localisation);
           }
         $scope.save = function() {
             var NewEvent = Parse.Object.extend("events");

@@ -29,19 +29,17 @@
                             <h1 class="ui four header center">{{event.get('name')}} - Nice</h1>
                         </div>
                     </div>
-                    <div class="ui divider"></div>
-                    <div class="sixteen wide column">
-                        <div class="ui grid">
-
-                            <div class="eleven wide computer eleven wide tablet sixteen wide mobile column">
-                                <div class="event description"><p></p></div></div> 
-                            <div class="five wide computer five wide tablet sixteen wide mobile column">
-                                <div class="info-title margin-top margin-bottom">Date</div> 
-                                <div class="info">
-                                    {{minDay}} {{minMonth}} {{minYear}} (Début)
-                                </div> <div class="info">
-                                {{maxDay}} {{maxMonth}} {{maxYear}} (Fin)
-                                </div></div></div></div>
+                    <h4 class="ui large horizontal divider header">
+                            <i class="large map icon"></i>
+                            Localisation
+                        </h4>
+                        <div class="sixteen wide column">
+                                <div class="ui grid">
+                                    <div class="eleven wide computer eleven wide tablet sixteen wide mobile column">
+                                        <div class="event description"><p>
+                                            
+                                                <div class="center" id="map" style="width:147%;height:250px;"></div>
+                                        </p></div></div></div>
                     <div class="sixteen wide column right aligned">
                         <div class="ui grid">
                             <div class="eleven wide computer eight wide tablet sixteen wide mobile column mobile-hidden">

@@ -33,8 +33,39 @@ angular.module('billetterieProjectApp')
             $scope.maxYear = $scope.event.get('dateEnd').substring(6, 10);
             console.log($scope.minMonth);
             console.log($scope.minDay);
+            console.log("LOCALISATION :" + $scope.event.get("localisation"));
+            initMap($scope.event.get("localisation"));
         });
-        
+        //function initMap() {
+            // The location of Uluru
+    //var geocoder;
+      //var map;
+      //var address = "11 rue thaon de revel nice";
+      
+      function initMap(address) {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: {lat: -34.397, lng: 150.644}
+        });
+        var geocoder = new google.maps.Geocoder();
+        codeAddress(geocoder, map, address);
+      }
+
+      function codeAddress(geocoder, map, address) {
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+          //}
+          
 setTimeout(function(){
   
     	var chart = new CanvasJS.Chart("chartContainer",

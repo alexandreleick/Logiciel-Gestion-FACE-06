@@ -3,12 +3,14 @@
 angular.module('billetterieProjectApp')
     .controller('CreateUserCtrl', ['$scope','$location', '$routeParams','APIManager', function($scope, $location, $routeParams, APIManager) {
         $scope.info = "Créer un utilisateur";
+        $scope.saveInfo = "Créer"
         $scope.user = [];
         $scope.poles = ['Presidence', 'Communication', 'Evenementiel', 'AgoraE', 'Representation', 'Reseau', 'Prevention', 'Run Radio', 'Informatique'];
 
         if ($routeParams.id) {
             $scope.user = Parse.User.current();
             $scope.info = "Modifier mes informations";
+            $scope.saveInfo = "Modifier";
             $scope.user.firstname = Parse.User.current().get("firstname");
             $scope.user.name = Parse.User.current().get("name");
             $scope.user.email = Parse.User.current().get("email");
@@ -72,11 +74,34 @@ angular.module('billetterieProjectApp')
             }
         }
 
+        // if ($('#inputCover')[0] !== undefined) {
+        //     $('#inputCover')[0].onchange = function() {
+        //         $scope.$apply(function() {
+        //             $scope.isImage = true;
+        //             // $scope.loadingCoverPhoto = true;
+        //         });
+        //         var fileUploadControl = $('#inputCover')[0];
+        //         if (fileUploadControl.files.length > 0) {
+        //             var file = fileUploadControl.files[0];
+        //             var name = 'coverPhoto.jpg';
+        //             var parseFile = new Parse.File(name, file);
+        //             console.log(parseFile);
+        //             //console.log($scope.event);
+        //             $scope.user.profilPicture = parseFile;
+        //             var tmppath = URL.createObjectURL(this.files[0]);
+        //             $("#imgs").fadeIn("fast").attr('src',URL.createObjectURL(this.files[0]));
+        //             $("#disp_tmp_path").html("Temporary Path(Copy it and try pasting it in browser address bar) --> <strong>["+tmppath+"]</strong>");
+        //             //$scope.loadingCoverPhoto = false;                    
+        //             $scope.user.profilPicture = parseFile;
+        //         }
+        //     };
+        // }
+
         if ($('#inputCover')[0] !== undefined) {
             $('#inputCover')[0].onchange = function() {
                 $scope.$apply(function() {
                     $scope.isImage = true;
-                    // $scope.loadingCoverPhoto = true;
+                    $scope.loadingCoverPhoto = true;
                 });
                 var fileUploadControl = $('#inputCover')[0];
                 if (fileUploadControl.files.length > 0) {
@@ -89,8 +114,8 @@ angular.module('billetterieProjectApp')
                     var tmppath = URL.createObjectURL(this.files[0]);
                     $("#imgs").fadeIn("fast").attr('src',URL.createObjectURL(this.files[0]));
                     $("#disp_tmp_path").html("Temporary Path(Copy it and try pasting it in browser address bar) --> <strong>["+tmppath+"]</strong>");
-                    //$scope.loadingCoverPhoto = false;                    
-                    $scope.user.profilPicture = parseFile;
+                    $scope.loadingCoverPhoto = false;                    
+                    $scope.event.coverPhoto = parseFile;
                 }
             };
         }
