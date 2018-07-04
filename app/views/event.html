@@ -1,7 +1,9 @@
 <script>
         $('.ui.dropdown')
             .dropdown({});
+            $('table').tablesort()
     </script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByN_z7pdvmCU8PAmSzfxM6jh_xfsuia-Y&libraries=places"></script>
     
 <div ng-include src="'views/header.html'"></div>
 <br/><br/>
@@ -63,28 +65,10 @@
                         <i class="child icon"></i>
                         Participants
                     </h4>
-
-
-
-
-
-                    <!--
-<h4 class="card-title">{{event.get('name')}}</h4>
-<p class="card-text">{{event.get('description')}}</p>
-<p class="card-text">{{event.get('localisation')}}</p>
-<p class="card-text">Du {{event.get('dateStart')}} à {{event.get('hourStart')}} au {{event.get('dateEnd')}} à {{event.get('hourEnd')}}</p>
-<p class="card-text"><small class="text-muted">Pôle : {{event.get('sector')}}</small></p>
-<a href="{{event.get('link')}}"><div class="ui vertical animated button" tabindex="0">
-<div class="visible content">S'inscrire</div>
-<div class="hidden content">
-<i class="shop icon"></i>
-</div>
-</div></a>
--->
                     <table class="ui sortable celled table">
                         <thead>
                             <tr>
-                                <th class="sorted descending" >Nom</th>
+                                <th>Nom</th>
                                 <th> Prénom</th>
                                 <th>E-mail</th>
                                 <th>Numéro de téléphone</th>
@@ -92,9 +76,9 @@
                                 <th>Filière</th>
                             </tr>
                         </thead>
-                        <tbody ng-repeat="peopleRegister in peoplesRegister">
-                            <tr>
-                                <td>{{peopleRegister.get('name')}}</td>
+                        <tbody >
+                            <tr ng-repeat="peopleRegister in peoplesRegister">
+                                <td >{{peopleRegister.get('name')}}</td>
                                 <td>{{peopleRegister.get('firstname')}}</td>
                                 <td>{{peopleRegister.get('mail')}}</td>
                                 <td>{{peopleRegister.get('phone')}}</td>
@@ -109,11 +93,12 @@
                                 <th></th>
                                 <th></th>
                                 <th></th>
-
                             </tr></tfoot>
                     </table>
                 </div>
             </div>
         </div>
+    
+        <br />
     </div>
 </body>

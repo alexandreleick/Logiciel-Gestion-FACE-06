@@ -1,3 +1,9 @@
+/*
+	A simple, lightweight jQuery plugin for creating sortable tables.
+	https://github.com/kylefox/jquery-tablesort
+	Version 0.0.11
+*/
+
 (function($) {
 	$.tablesort = function ($table, settings) {
 		var self = this;
@@ -38,12 +44,7 @@
 				this.index = th.index();
 			}
 			else if (direction !== 'asc' && direction !== 'desc')
-                {
-                   if (this.direction === 'asc')
-                       this.direction = 'desc';
-                    else
-                        this.direction = 'asc';
-                }
+				this.direction = this.direction === 'asc' ? 'desc' : 'asc';
 			else
 				this.direction = direction;
 
@@ -86,7 +87,7 @@
 		},
 
 		log: function(msg) {
-			if(($.tablesort.DEBUG || this.settings.debug)) {
+			if(($.tablesort.DEBUG || this.settings.debug) && console && console.log) {
 				console.log('[tablesort] ' + msg);
 			}
 		},

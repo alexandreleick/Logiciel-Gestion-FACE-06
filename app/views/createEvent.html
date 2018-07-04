@@ -11,7 +11,7 @@ $('#inputCover').click();
 
 
 <!--<div ng-include src="'views/header.html'"></div>-->
-
+<body>
 <div ng-include src="'views/header.html'"></div>
 <!-- <br/><br/><br/><br/>
 <div class="ui raised very padded text container segment">
@@ -174,12 +174,12 @@ $('#inputCover').click();
       </h4>
       <div class="form-group">
             <label for="validationDefault03">Lieu</label>
-                <input type="text" ng-model="event.localisation" class="form-control" id="validationDefault03" placeholder="Lieu" required>
+                <input id="user_input_autocomplete_address" autocomplete="on" placeholder="Votre adresse..." type="text" ng-model="event.localisation" class="form-control" required>
       </br>
                 <label for="exampleFormControlTextarea1">Description</label>
                 <textarea class="form-control" ng-model="event.desc" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
-        
+    </br></br>
       <div class="ui centered grid">
 
       <div class="ui large buttons">
@@ -188,6 +188,7 @@ $('#inputCover').click();
             <a href="/#!/events"><button class="fluid ui button">Annuler</button></a>
           </div>
       </div>
-        
+    
     </div>
   </form>
+</body>

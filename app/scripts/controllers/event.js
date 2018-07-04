@@ -10,6 +10,7 @@ angular.module('billetterieProjectApp')
         var calendar = ["", "Jan.", "Fev.", "Mar.", "Avr.", "Mai", "Juin", "Juil.", "Aou.", "Sep.", "Oct.", "Nov.", "Dec."];
         $scope.filiere = {'DROIT': 0 , 'ISEM': 0 , 'IAE': 0 , 'POLE SANTE':0 , 'STAPS':0 , 'POLYTECH':0 , 'MIAGE':0 , 'IUT':0 , 'SCIENCES': 0  , 'ECOLES PRIVÉES': 0  , 'LASH':0 , 'ESPE':0 , 'BTS':0, 'Autre':0 };
         APIManager.getEvent($routeParams.id).then(function(event) {
+          
             $scope.event = event;
             console.log(event);
             APIManager.getPeoplesRegister($scope.event).then(function(peoplesRegister) {
@@ -33,7 +34,7 @@ angular.module('billetterieProjectApp')
             console.log($scope.minMonth);
             console.log($scope.minDay);
         });
-
+        
 setTimeout(function(){
   
     	var chart = new CanvasJS.Chart("chartContainer",
@@ -66,27 +67,6 @@ setTimeout(function(){
 		]
 	});
 	chart.render();
-//            var chart = new CanvasJS.Chart("chartContainer", {
-//                title:{
-//                    text: "My First Chart in CanvasJS"              
-//                },
-//                data: [              
-//                    {
-//                        // Change type to "doughnut", "line", "splineArea", etc.
-//                        type: "column",
-//                        dataPoints: [
-//                            { label: "Droit",  y: $scope.filiere.DROIT},
-//                            { label: "ISEM", y: $scope.filiere.ISEM},
-//                            { label: "IAE", y: $scope.filiere.IAE},
-//                            { label: "Pole Santé",  y: $scope.filiere["POLE SANTE"]},
-//                            { label: "STAPS",  y: $scope.filiere.STAPS}
-//                        ]
-//                    }
-//                ]
-//            });
-//            chart.render();
-        
         }, 3000);
-
     }]);
 
