@@ -80,12 +80,15 @@ angular
       });
   })
     .run(function($rootScope, $location) {
-    
+
     $rootScope.$on('$routeChangeStart', function(event, next) {
         console.log(next.$$route.templateUrl)
         if (next.$$route.templateUrl != "views/eventBilletterie.html" && next.$$route.templateUrl != "views/subscribeUser.html")
         if (Parse.User.current() === null || Parse.User.current().get('name') === null) {
+            console.log("NO USER");
             $location.path('/');
+        } else {
+            console.log("USER");
         }
         //      $rootScope.pageTitle = next.$$route.title;
     });

@@ -32,17 +32,23 @@ angular.module('billetterieProjectApp')
         query.ascending('lastName');
         //query.equalTo('status', Constants.AgencyActionStatus.Joined);
         query.limit(1000);
-        query.find({
+        query.find().then(function(result) {
+          defer.resolve(result);
+        }, function(error) {
+          console.log(error);
+          defer.reject(result);
+        });
+        /*query.find({
             success: function(results) {
                 defer.resolve(results);
             },
             error: function(error) {
                 defer.reject(error);
             }
-        });
+        });*/
         return defer.promise;
     };
-    
+
     this.getUser = function(userId) {
         var defer = $q.defer();
         var query = new Parse.Query('_User');
@@ -51,6 +57,13 @@ angular.module('billetterieProjectApp')
         console.log(userId);
         //query.equalTo('status', Constants.AgencyActionStatus.Joined);
         //query.limit(1000);
+        query.find().then(function(result) {
+          defer.resolve(result);
+        }, function(error) {
+          console.log(error);
+          defer.reject(result);
+        });
+        /*
         query.first({
             success: function(results) {
                 console.log(results);
@@ -61,6 +74,7 @@ angular.module('billetterieProjectApp')
                 defer.reject(error);
             }
         });
+        */
         return defer.promise;
     };
 
@@ -68,6 +82,13 @@ angular.module('billetterieProjectApp')
         var defer = $q.defer();
         var query = new Parse.Query('eventUsers');
         query.equalTo('event', id);
+        query.find().then(function(result) {
+          defer.resolve(result);
+        }, function(error) {
+          console.log(error);
+          defer.reject(error);
+        });
+        /*
         query.find({
             success: function (peoples) {
                 //            this.events = events;
@@ -78,9 +99,10 @@ angular.module('billetterieProjectApp')
                 defer.reject();
             }
         });
+        */
         return defer.promise;
     };
-    
+
     this.getEvents = function () {
         var defer = $q.defer();
         if (events == undefined) {
@@ -91,6 +113,14 @@ angular.module('billetterieProjectApp')
             defer.resolve(events);
         }
         var query = new Parse.Query('events');
+        query.find().then(function(result) {
+            defer.resolve(result);
+        }, function(error) {
+            defer.reject(result);
+        });
+        //const result = await query.find();
+        //defer.resolve(result);
+        /*
         query.find({
             success: function (events) {
                 //            this.events = events;
@@ -101,6 +131,7 @@ angular.module('billetterieProjectApp')
                 defer.reject();
             }
         });
+        */
         return defer.promise;
     };
 
@@ -108,6 +139,13 @@ angular.module('billetterieProjectApp')
         var defer = $q.defer();
         var query = new Parse.Query('events');
         query.equalTo('name', id);
+        query.find().then(function(result) {
+          defer.resolve(result);
+        }, function(error) {
+          console.log(error);
+          defer.reject(result);
+        });
+        /*
         query.first({
             success: function(event) {
                 defer.resolve(event);
@@ -117,6 +155,7 @@ angular.module('billetterieProjectApp')
                 defer.reject(error);
             }
         });
+        */
         return defer.promise;
     };
 
@@ -149,7 +188,7 @@ angular.module('billetterieProjectApp')
         });
         return defer.promise;
     };
-    
+
     this.deleteUser = function(user) {
         var defer = $q.defer();
         user.destroy({

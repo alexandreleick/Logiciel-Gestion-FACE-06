@@ -6,13 +6,14 @@ angular.module('billetterieProjectApp')
         $scope.event = [];
         $scope.peoplesRegister = [];
         $scope.numberOfTicket = 0
-        
+
         var calendar = ["", "Jan.", "Fev.", "Mar.", "Avr.", "Mai", "Juin", "Juil.", "Aou.", "Sep.", "Oct.", "Nov.", "Dec."];
         $scope.filiere = {'DROIT': 0 , 'ISEM': 0 , 'IAE': 0 , 'POLE SANTE':0 , 'STAPS':0 , 'POLYTECH':0 , 'MIAGE':0 , 'IUT':0 , 'SCIENCES': 0  , 'ECOLES PRIVÉES': 0  , 'LASH':0 , 'ESPE':0 , 'BTS':0, 'Autre':0 };
         APIManager.getEvent($routeParams.id).then(function(event) {
-          
-            $scope.event = event;
-            console.log(event);
+
+            $scope.event = event[0];
+            console.log("RECUPERATION DE L'EVENT");
+            console.log(event[0]);
             APIManager.getPeoplesRegister($scope.event).then(function(peoplesRegister) {
                 $scope.peoplesRegister = peoplesRegister;
                 console.log(peoplesRegister);
@@ -41,7 +42,7 @@ angular.module('billetterieProjectApp')
     //var geocoder;
       //var map;
       //var address = "11 rue thaon de revel nice";
-      
+
       function initMap(address) {
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 15,
@@ -65,14 +66,14 @@ angular.module('billetterieProjectApp')
         });
       }
           //}
-          
+
 setTimeout(function(){
-  
+
     	var chart = new CanvasJS.Chart("chartContainer",
 	{
 		theme: "theme2",
 		data: [
-		{       
+		{
 			type: "pie",
 			showInLegend: true,
 			toolTipContent: "{y} - #percent %",
@@ -92,7 +93,7 @@ setTimeout(function(){
                 {  y: $scope.filiere.BTS, indexLabel: "BTS" },
                 {  y: $scope.filiere.Autre, indexLabel: "Autre" },
                 {  y: $scope.filiere.STAPS, indexLabel: "STAPS" }
-                
+
 			]
 		}
 		]
@@ -100,4 +101,3 @@ setTimeout(function(){
 	chart.render();
         }, 3000);
     }]);
-

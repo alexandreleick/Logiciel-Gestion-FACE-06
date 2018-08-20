@@ -1,20 +1,37 @@
 'use strict';
 
 Parse.initialize("lgface06");
-Parse.serverURL = 'https://logiciel-gestion-face-06.herokuapp.com/parse'; 
+Parse.serverURL = 'https://logiciel-gestion-face-06.herokuapp.com/parse';
 angular.module('billetterieProjectApp')
     .controller('LoginCtrl', ['$scope','$location', function($scope, $location) {
         $scope.username = "";
         $scope.password = "";
         $scope.logIn = function() {
             if ($scope.username && $scope.password) {
-                Parse.User.logIn($scope.username, $scope.password, {
+              Parse.User.logIn($scope.username, $scope.password).then(function(result) {
+                console.log(result);
+                location.href = '/#!/events';
+                iziToast.success({
+                            title: "Connexion réussi",
+                            position: 'center',
+                            message: "Bonjour " + result.get("firstname")
+                        });
+              }, function(error) {
+                iziToast.error({
+                    title: "Attention",
+                    position: 'center',
+                    message: "Mot de passe ou identifiant incorrect !"
+                });
+                  console.log(error);
+              });
+
+              /*, {
                     success: function(user) {
                         console.log(user);
                         location.href = '/#!/events';
                         iziToast.success({
                             title: "Connexion réussi",
-                            position: 'center', 
+                            position: 'center',
                             message: "Bonjour " + user.get('firstname')
                         });
                         //swal("Connexion réussi", "Bonjour " + user.get('firstname'), "success");
@@ -25,15 +42,15 @@ angular.module('billetterieProjectApp')
                         // The login failed. Check error to see why.
                         iziToast.error({
                             title: "Attention",
-                            position: 'center', 
+                            position: 'center',
                             message: "Mot de passe ou identifiant incorrect !"
                         });
                     }
-                });
+                });*/
             } else {
                 iziToast.warning({
                     title: "Attention",
-                    position: 'center', 
+                    position: 'center',
                     message: "Merci de remplir les informations au dessus !"
                 });
                 //swal("Attention", "Merci de remplir les informations au dessus !", "warning");

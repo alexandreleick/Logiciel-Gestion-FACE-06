@@ -7,7 +7,9 @@ angular.module('billetterieProjectApp')
         $scope.user = Parse.User.current();
         $scope.loadingEvent = true;
         $scope.numberOfParticipants = 0;
+        console.log("BEFORE GET EVENTS");
         APIManager.getEvents().then( function(events) {
+          console.log("EVENT FILE : IN GET EVENTS ");
             $scope.events = events;
             console.log($scope.events);
             $scope.loadingEvent = false;
@@ -61,5 +63,5 @@ angular.module('billetterieProjectApp')
                 }
             });
         };
-  
+
     }]);
