@@ -11,7 +11,7 @@ angular.module('billetterieProjectApp')
         console.log($scope.campus[0]);
         APIManager.getEvent($routeParams.id).then(function(event) {
             $scope.event = event;
-            //console.log($scope.event);
+            console.log($scope.event[0]);
 
         })
         $scope.save = function() {
@@ -33,9 +33,9 @@ angular.module('billetterieProjectApp')
                     newUser.set('campus', $scope.user.otherCampus);
 
                 newUser.set('year', "2017");
-                newUser.set('event', $scope.event);
+                newUser.set('event', $scope.event[0]);
                 newUser.save();
-                BilletService.createBillet($scope.event, $scope.user);
+                BilletService.createBillet($scope.event[0], $scope.user);
                 swal("Félicitation", "Vous êtes officiellement inscrit à l'événement : " + $scope.event.get('name') + ". \nN'oubliez pas votre billet et votre carte étudiante.", "success");
 
             } else {

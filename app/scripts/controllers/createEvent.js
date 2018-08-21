@@ -5,6 +5,7 @@ angular.module('billetterieProjectApp')
         $scope.event = [];
         $scope.user = Parse.User.current();
         $scope.title = "Créer";
+        console.log($scope.event.dateStart);
         if ($routeParams.id) {
             console.log('Existe');
             APIManager.getEvent($routeParams.id).then(function(event) {
@@ -20,7 +21,7 @@ angular.module('billetterieProjectApp')
                 $scope.event.id = event.id;
                 $scope.title = "Modifier";
             });
-            
+
         }
         if ($('#inputCover')[0] !== undefined) {
             $('#inputCover')[0].onchange = function() {
@@ -39,14 +40,14 @@ angular.module('billetterieProjectApp')
                     var tmppath = URL.createObjectURL(this.files[0]);
                     $("#imgs").fadeIn("fast").attr('src',URL.createObjectURL(this.files[0]));
                     $("#disp_tmp_path").html("Temporary Path(Copy it and try pasting it in browser address bar) --> <strong>["+tmppath+"]</strong>");
-                    $scope.loadingCoverPhoto = false;                    
+                    $scope.loadingCoverPhoto = false;
                     $scope.event.coverPhoto = parseFile;
                 }
             };
         }
 
         initializeAutocomplete('user_input_autocomplete_address');
-        
+
 
         function initializeAutocomplete(id) {
             var element = document.getElementById(id);
@@ -57,9 +58,9 @@ angular.module('billetterieProjectApp')
           }
           function onPlaceChanged() {
             var place = this.getPlace();
-          
+
             console.log(place);  // Uncomment this line to view the full object returned by Google API.
-          
+
             for (var i in place.address_components) {
               var component = place.address_components[i];
               for (var j in component.types) {  // Some types are ["country", "political"]
@@ -73,13 +74,14 @@ angular.module('billetterieProjectApp')
             console.log("SCOPE " + $scope.event.localisation);
           }
         $scope.save = function() {
+            var newDate = $scope.event.dateStart.getDate() + '/' + ($scope.event.dateStart.getMonth() + 1) + '/' + $scope.event.dateStart.getFullYear()
             var NewEvent = Parse.Object.extend("events");
             var newEvent = new NewEvent();
             if ($scope.event.id)
                 newEvent.set('objectId', $scope.event.id);
             newEvent.set('name', $scope.event.name);
-            newEvent.set('dateStart', $scope.event.dateStart);
-            newEvent.set('dateEnd', $scope.event.dateEnd);
+            newEvent.set('dateStart', $scope.event.dateStart.getDate() + '/' + ($scope.event.dateStart.getMonth() + 1) + '/' + $scope.event.dateStart.getFullYear());
+            newEvent.set('dateEnd', $scope.event.dateEnd.getDate() + '/' + ($scope.event.dateEnd.getMonth() + 1) + '/' + $scope.event.dateEnd.getFullYear());
             newEvent.set('hourStart', $scope.event.hourStart);
             newEvent.set('hourEnd', $scope.event.hourEnd);
             newEvent.set('description', $scope.event.desc);
@@ -93,7 +95,7 @@ angular.module('billetterieProjectApp')
                     swal($scope.event.name, "L'événement a été " + $scope.title.toLowerCase() + " avec succès !", "success");
                     $scope.$apply(function() {
                     $location.path("/event/" + $scope.event.name);
-                        
+
                     });
                     console.log($scope.event);
                 }

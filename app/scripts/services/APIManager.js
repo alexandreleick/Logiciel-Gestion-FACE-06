@@ -36,7 +36,7 @@ angular.module('billetterieProjectApp')
           defer.resolve(result);
         }, function(error) {
           console.log(error);
-          defer.reject(result);
+          defer.reject(error);
         });
         /*query.find({
             success: function(results) {
@@ -61,7 +61,7 @@ angular.module('billetterieProjectApp')
           defer.resolve(result);
         }, function(error) {
           console.log(error);
-          defer.reject(result);
+          defer.reject(error);
         });
         /*
         query.first({
@@ -116,7 +116,7 @@ angular.module('billetterieProjectApp')
         query.find().then(function(result) {
             defer.resolve(result);
         }, function(error) {
-            defer.reject(result);
+            defer.reject(error);
         });
         //const result = await query.find();
         //defer.resolve(result);
@@ -143,7 +143,7 @@ angular.module('billetterieProjectApp')
           defer.resolve(result);
         }, function(error) {
           console.log(error);
-          defer.reject(result);
+          defer.reject(error);
         });
         /*
         query.first({

@@ -2,7 +2,7 @@
     $('.ui.dropdown')
         .dropdown({});
 </script>
-<!-- 
+<!--
 <div class="ui raised very padded text container segment">
     <form class="ui equal width form" name="form">
 
@@ -58,7 +58,7 @@
             <input ng-model="user.carteNumber" type="text" class="form-control" id="inputAddress" placeholder="Numéro de carte étudiante" required>
         </div> -->
 
-        
+
         <!--
 <div class="dropdown">
 <label for="dropdownMenuButton" class="col-form-label">Pôle</label>
@@ -82,6 +82,7 @@ Pôle
 <form class="ui form" {{action 'submit' on='submit' }} name="form">
         <br/><br/><br/><br/><br/><br/><br/><br/>
         <center>
+
         <div class="ui steps">
                 <div class="step">
                   <i class="calendar alternate icon"></i>
@@ -105,9 +106,9 @@ Pôle
                 </div>
               </div>
             </center>
-    <div class="ui padded segment"> 
+    <div id="Div_1" class="ui padded segment">
         <center class="ui dividing header">Inscription à l'événement : {{event.get('name')}}</center>
-        <img class="card-img-top" src="{{event.get('coverPhoto').url()}}" alt="Card image cap">
+        <img class="card-img-top" src="{{event.get('coverPhoto').url()}}">
       <h6 class="ui horizontal divider header">
         <i class="ticket icon"></i>
         Informations Personnelles

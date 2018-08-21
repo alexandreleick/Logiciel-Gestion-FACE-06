@@ -76,7 +76,7 @@ $('#inputCover').click();
         </div>
         <form>
             <div class="form-group">
-               
+
                 <label for="exampleFormControlFile1">Photo de l'événement</label>
                 <input type="file" ng-model="event.coverPhoto" class="form-control-file" id="inputCover">
             </div>
@@ -98,7 +98,7 @@ $('#inputCover').click();
 
 <form class="ui form" {{action 'submit' on='submit' }} name="form">
         <br/><br/><br/><br/>
-    <div class="ui padded segment"> 
+    <div class="ui padded segment">
         <center class="ui dividing header">{{title}} un événement</center>
       <h6 class="ui horizontal divider header">
         <i class="ticket icon"></i>
@@ -106,7 +106,7 @@ $('#inputCover').click();
       </h6>
       <br />
       <div class="ui grid">
-            
+
             <div class="ui centered container" id="divUpload">
                 <div class="ui center aligned segment container" style="background-color: rgb(242, 242, 242)" ng-hide="loadingCoverPhoto">
                     <div class="ui inverted dimmer">
@@ -151,7 +151,7 @@ $('#inputCover').click();
         <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="validationDefault04">Date de début</label>
-                    <input type="text" ng-model="event.dateStart" class="form-control" id="validationDefault04" placeholder="DD/MM/YYYY" required>
+                    <input type="date" ng-model="event.dateStart" class="form-control" id="validationDefault04" placeholder="DD/MM/YYYY" required>
                 </div>
                 <div class="form-group col-md-6">
                         <label for="validationDefault04">Heure de début</label>
@@ -161,7 +161,7 @@ $('#inputCover').click();
             <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="validationDefault04">Date de fin</label>
-                        <input type="text" ng-model="event.dateEnd" class="form-control" id="validationDefault04" placeholder="DD/MM/YYYY" required>
+                        <input type="date" ng-model="event.dateEnd" class="form-control" id="validationDefault04" placeholder="DD/MM/YYYY" required>
                     </div>
                     <div class="form-group col-md-6">
                             <label for="validationDefault04">Heure de fin</label>
@@ -188,7 +188,7 @@ $('#inputCover').click();
             <a href="/#!/events"><button class="fluid ui button">Annuler</button></a>
           </div>
       </div>
-    
+
     </div>
   </form>
 </body>
