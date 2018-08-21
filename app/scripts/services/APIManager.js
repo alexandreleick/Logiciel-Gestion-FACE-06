@@ -63,6 +63,8 @@ angular.module('billetterieProjectApp')
           console.log(error);
           defer.reject(error);
         });
+
+
         /*
         query.first({
             success: function(results) {
@@ -77,6 +79,24 @@ angular.module('billetterieProjectApp')
         */
         return defer.promise;
     };
+
+    this.getEventUser = function(userId) {
+          var defer = $q.defer();
+          var query = new Parse.Query('eventUsers');
+          //query.ascending('name');
+          query.equalTo('objectId', userId);
+          query.include("event");
+          console.log(userId);
+          //query.equalTo('status', Constants.AgencyActionStatus.Joined);
+          //query.limit(1000);
+          query.find().then(function(result) {
+            defer.resolve(result);
+          }, function(error) {
+            console.log(error);
+            defer.reject(error);
+          });
+          return defer.promise;
+        };
 
     this.getPeoplesRegister = function (id) {
         var defer = $q.defer();

@@ -1,0 +1,108 @@
+<body bgcolor="#FDFDFD">
+  <br/><br/><br/><br/>
+    <div id="Div_1" class="ui raised very padded container segment">
+
+        <div class="ui  container">
+          <h4 class="ui large horizontal divider header">
+              <i class="large ticket icon"></i>
+              Billet Numérique
+          </h4>
+          <br/>
+          <div class="ui statistics">
+              <div class="statistic">
+                  <div class="value">
+                      {{minDay}}
+                  </div>
+                  <div class="label">
+                      {{minMonth}}
+                  </div>
+
+              </div>
+              <div class="statistic four">
+                  <h1 class="ui four header center">Evènement Face06 :   {{event.get('name')}} - Nice</h1>
+              </div>
+          </div>
+          <div class="ui two column very relaxed grid">
+      <div class="column">
+        <p></p>
+        <p></p>
+        <h6 class="ui horizontal divider header">
+                <i class="map icon"></i>
+                Localisation
+        </h6>
+          <label for="firstname" class="col-form-label hidden"></label>
+          <label for="firstname" class="col-form-label hidden"></label>
+          <div class="center" id="map" style="width:100%;height:200px;"></div>
+          <br/>
+          <center>
+          <div class="ui steps">
+              <div class="step">
+                  <div class="title">Adresse</div>
+                    <div class="description">{{event.get('localisation')}}</div>
+                  </div>
+                </div>
+          </center>
+        <p></p>
+        <p></p>
+      </div>
+
+      <div class="column">
+        <p></p>
+        <p></p>
+        <h6 class="ui horizontal divider header">
+          <i class="ticket icon"></i>
+          Informations Personnelles
+        </h6>
+        <div class="form-row">
+              <div class="col">
+                  <label for="firstname" class="col-form-label">Prénom</label>
+                  <label ng-model="user.firstname" type="text" id="firstname" class="form-control">{{user[0].get('firstname')}}<label/>
+              </div>
+              <div class="col">
+                  <label for="name" class="col-form-label">Nom</label>
+                  <label ng-model="user.name" type="text" id="name" class="form-control" placeholder="Nom" required>{{user[0].get('name')}}<label/>
+              </div>
+          </div>
+          <div class="form-row">
+                  <div class="form-group col-md-6">
+                      <label for="inputEmail4" class="col-form-label">Email</label>
+                      <label ng-model="user.mail" type="email" class="form-control" id="inputEmail4" placeholder="Email" required>{{user[0].get('mail')}}<label/>
+                  </div>
+                  <div class="form-group col-md-6">
+                      <label for="inputPassword4" class="col-form-label">Numéro de téléphone</label>
+                      <label ng-model="user.phone" type="text" class="form-control" id="inputPassword4" placeholder="Numéro de téléphone" required>{{user[0].get('phone')}}<label/>
+                  </div>
+              </div>
+              <h6 class="ui horizontal divider header">
+                  <i class="ticket icon"></i>
+                  Informations Etudiantes
+              </h6>
+              <div class="form-row">
+                      <div class="form-group col-md-6">
+                          <label for="inputEmail4" class="col-form-label">Filière</label>
+                          <label ng-model="user.filiere" type="email" class="form-control" id="inputEmail4" placeholder="Email" required>{{user[0].get('filiere')}}</label>
+                      </div>
+                      <div class="form-group col-md-6">
+                          <label for="inputPassword4" class="col-form-label">Campus</label>
+                          <label ng-model="user.campus" type="text" class="form-control" id="inputPassword4" placeholder="Numéro de téléphone" required>{{user[0].get('campus')}}</label>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="inputAddress" class="col-form-label">Numéro de carte étudiante</label>
+                      <label ng-model="user.carteNumber" type="text" class="form-control" id="inputAddress" placeholder="Numéro de carte étudiante" required>{{user[0].get('carteNumber')}}</label>
+                  </div>
+        <p></p>
+        <p></p>
+      </div>
+    </div>
+    </div>
+    <h4 class="ui large horizontal divider header">
+       <i class="large announcement icon"></i>
+       Description
+   </h4>
+   <div class="ui piled segment">
+       <p>{{event.get('description')}}</p>
+   </div>
+  </div>
+  <button class="fluid ui teal button" type="submit" ng-click="testPDF()">Imprimer mon billet</button>
+</body>

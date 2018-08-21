@@ -69,22 +69,6 @@ angular.module('billetterieProjectApp')
 });
 }
 
-this.testPDF = function() {
-  var data_1;
-  html2canvas(document.getElementById('Div_1'), {
-   onrendered: function (canvas) {
-       data_1 = canvas.toDataURL();
-       console.log(data_1);
-       var docDefinition = {
-            content: [{
-                    image: data_1,
-                    width: 500,
-                }]
-        };
 
-        pdfMake.createPdf(docDefinition).download("test.pdf");
-   }
-});
-}
 
 });

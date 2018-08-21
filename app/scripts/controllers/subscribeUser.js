@@ -12,8 +12,10 @@ angular.module('billetterieProjectApp')
         APIManager.getEvent($routeParams.id).then(function(event) {
             $scope.event = event;
             console.log($scope.event[0]);
-
         })
+        $scope.redirectTo2 = function() {
+
+        }
         $scope.save = function() {
             if ($scope.user.name && $scope.user.firstname && $scope.user.carteNumber && $scope.user.phone && $scope.user.mail && $scope.user.filiere && $scope.user.campus) {
                 var NewUser = Parse.Object.extend("eventUsers");
@@ -34,9 +36,19 @@ angular.module('billetterieProjectApp')
 
                 newUser.set('year', "2017");
                 newUser.set('event', $scope.event[0]);
-                newUser.save();
-                BilletService.createBillet($scope.event[0], $scope.user);
-                swal("Félicitation", "Vous êtes officiellement inscrit à l'événement : " + $scope.event.get('name') + ". \nN'oubliez pas votre billet et votre carte étudiante.", "success");
+                newUser.save().then(function(user) {
+                  $scope.user = user;
+                  var paths = "#!/billetterie/ticket/" + user.id;
+                  console.log(user);
+                  console.log(paths);
+                  setTimeout(function(){ document.location.href=paths }, 200);
+
+
+                }, function(error) {
+
+                });
+                //BilletService.createBillet($scope.event[0], $scope.user);
+                swal("Félicitation", "Vous êtes officiellement inscrit à l'événement : " + $scope.event[0].get('name') + ". \nN'oubliez pas votre billet et votre carte étudiante.", "success");
 
             } else {
                 swal("Attention", "Merci de remplir toutes les informations nécessaires à l'inscription !", "warning");
