@@ -2,10 +2,10 @@
 
 angular.module('billetterieProjectApp')
     .controller('CreateUserCtrl', ['$scope','$location', '$routeParams','APIManager', function($scope, $location, $routeParams, APIManager) {
+        $scope.poles = ['Presidence', 'Communication', 'Evenementiel', 'AgoraE', 'Representation', 'Reseau', 'Prevention', 'Run Radio', 'Informatique'];        
         $scope.info = "Créer un utilisateur";
         $scope.saveInfo = "Créer"
         $scope.user = [];
-        $scope.poles = ['Presidence', 'Communication', 'Evenementiel', 'AgoraE', 'Representation', 'Reseau', 'Prevention', 'Run Radio', 'Informatique'];
 
         if ($routeParams.id) {
             $scope.user = Parse.User.current();

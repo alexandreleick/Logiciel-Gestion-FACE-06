@@ -88,7 +88,7 @@ angular
 
     $rootScope.$on('$routeChangeStart', function(event, next) {
         console.log(next.$$route.templateUrl)
-        if (next.$$route.templateUrl != "views/eventBilletterie.html" && next.$$route.templateUrl != "views/subscribeUser.html")
+        if (next.$$route.templateUrl != "views/eventBilletterie.html" && next.$$route.templateUrl != "views/subscribeUser.html" && next.$$route.templateUrl != "views/ticketUser.html")
         if (Parse.User.current() === null)/* || Parse.User.current().get('name') === null)*/ {
             console.log("NO USER");
             console.log(Parse.User.current());

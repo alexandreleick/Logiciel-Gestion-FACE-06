@@ -10,15 +10,15 @@ angular.module('billetterieProjectApp')
             console.log('Existe');
             APIManager.getEvent($routeParams.id).then(function(event) {
                 console.log(event);
-                $scope.event.name = event.get('name');
-                $scope.event.dateStart = event.get('dateStart');
-                $scope.event.dateEnd = event.get('dateEnd');
-                $scope.event.hourStart = event.get('hourStart');
-                $scope.event.hourEnd = event.get('hourEnd');
-                $scope.event.desc = event.get('description');
-                $scope.event.localisation = event.get('localisation');
-                $scope.event.coverPhoto = event.get('coverPhoto');
-                $scope.event.id = event.id;
+                $scope.event.name = event[0].get('name');
+                $scope.event.dateStart = event[0].get('dateStart');
+                $scope.event.dateEnd = event[0].get('dateEnd');
+                $scope.event.hourStart = event[0].get('hourStart');
+                $scope.event.hourEnd = event[0].get('hourEnd');
+                $scope.event.desc = event[0].get('description');
+                $scope.event.localisation = event[0].get('localisation');
+                $scope.event.coverPhoto = event[0].get('coverPhoto');
+                $scope.event.id = event[0].id;
                 $scope.title = "Modifier";
             });
 

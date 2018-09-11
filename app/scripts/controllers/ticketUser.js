@@ -65,7 +65,7 @@ angular.module('billetterieProjectApp')
         //canvas: canvas,
         logging: true,
         useCORS: true,
-        allowTaint: false
+        //allowTaint: true
     };
       html2canvas(document.getElementById('Div_1'), opts).then(canvas => {
         console.log("Je crée le PDF");
